@@ -17,6 +17,9 @@
 		A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD042B4F13300018FC1D /* TestView.swift */; };
 		A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */; };
 		A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */; };
+		A1D0AD0D2B4F310B0018FC1D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD0C2B4F310B0018FC1D /* LoginView.swift */; };
+		A1D0AD0F2B4F33320018FC1D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD0E2B4F33320018FC1D /* InputView.swift */; };
+		A1D0AD112B4F3B2D0018FC1D /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD102B4F3B2D0018FC1D /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		A1D0AD042B4F13300018FC1D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
 		A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailView.swift; sourceTree = "<group>"; };
+		A1D0AD0C2B4F310B0018FC1D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A1D0AD0E2B4F33320018FC1D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		A1D0AD102B4F3B2D0018FC1D /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		A1D0ACFE2B4F12720018FC1D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A1D0AD0B2B4F30860018FC1D /* LoginView */,
 				A1D0AD0A2B4F171D0018FC1D /* Test */,
 			);
 			path = Scenes;
@@ -125,6 +132,16 @@
 				A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		A1D0AD0B2B4F30860018FC1D /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				A1D0AD0C2B4F310B0018FC1D /* LoginView.swift */,
+				A1D0AD102B4F3B2D0018FC1D /* RegistrationView.swift */,
+				A1D0AD0E2B4F33320018FC1D /* InputView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1D0AD112B4F3B2D0018FC1D /* RegistrationView.swift in Sources */,
 				A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */,
 				A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */,
 				A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */,
+				A1D0AD0D2B4F310B0018FC1D /* LoginView.swift in Sources */,
 				A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */,
 				A1D0ACFD2B4F12580018FC1D /* Person.swift in Sources */,
 				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
+				A1D0AD0F2B4F33320018FC1D /* InputView.swift in Sources */,
 				A1D0AD022B4F12AB0018FC1D /* Color.swift in Sources */,
 				A1D0ACEA2B4F110B0018FC1D /* SceneDelegate.swift in Sources */,
 			);

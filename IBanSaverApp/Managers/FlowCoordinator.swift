@@ -16,18 +16,18 @@ final class FlowCoordinator: ObservableObject {
     }
     
     func showRootView() {
-        let swiftUIView = TestView()
+        let swiftUIView = LoginView()
             .environmentObject(self)
         let hostingView = UIHostingController(rootView: swiftUIView)
         window.rootViewController = UINavigationController(rootViewController: hostingView)
     }
     
-    func showDetailView() {
-        let detailView = TestDetailView()
-            .environmentObject(self)
-        let viewController = UIHostingController(rootView: detailView)
-        window.rootViewController?.present(viewController, animated: true, completion: nil)
-    }
+//    func showDetailView() {
+//        let detailView = TestDetailView()
+//            .environmentObject(self)
+//        let viewController = UIHostingController(rootView: detailView)
+//        window.rootViewController?.present(viewController, animated: true, completion: nil)
+//    }
     
     func closeDetailView() {
         // Needs to be more sophisticated later when there are more views
