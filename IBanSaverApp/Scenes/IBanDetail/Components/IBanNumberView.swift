@@ -25,7 +25,7 @@ struct IBanNumberView: View {
     }
     
     // MARK: - Computed Properties
-    var IBanDetails: some View {
+    private var IBanDetails: some View {
         VStack(alignment: .leading, spacing: 3) {
             Text(viewModel.bankName)
                 .foregroundStyle(Color.white)
@@ -42,7 +42,7 @@ struct IBanNumberView: View {
         }
     }
     
-    var actionButtons: some View {
+    private var actionButtons: some View {
         HStack {
             roundedIconButton(icon: "doc.on.doc", action: viewModel.copyIban)
             roundedIconButton(icon: "square.and.arrow.up", action: viewModel.shareIban)

@@ -9,66 +9,63 @@ import SwiftUI
 
 struct IBanDetailView: View {
     
+    
+    // MARK: - Body
     var body: some View {
         ZStack {
-            // Background
             Color.black.edgesIgnoringSafeArea(.all)
-
-            // Content
-            VStack {
-                headerView
-                ScrollView {
-                    VStack(spacing: 20) {
-                        IBanNumberView()
-                        IBanNumberView()
-                        IBanNumberView()
-                        IBanNumberView()
-                    }
-                    .padding()
-                }
-            }
-
-            addButton
+            contentView
         }
     }
     
-    var headerView: some View {
+    // MARK: - Computed Properties
+    private var contentView: some View {
         VStack {
-            Text("Your IBAN Numbers")
-                .font(.largeTitle)
+            headerView
+            iBanList
+            addIBanButton.padding()
+        }
+    }
+    
+    private var headerView: some View {
+        VStack(spacing: 16) {
+            Text("Your IBan Numbers")
+                .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .padding(.bottom, 5)
             
-            Text("Manage all your IBANs in one place")
-                .font(.subheadline)
-                .foregroundColor(.gray)
+            Image(.safeLock)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 150)
         }
         .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(15)
-        .padding([.bottom, .horizontal])
     }
-
-    var addButton: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Button(action: {
-                    // Action to add new IBAN
-                }) {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(red: 231/255, green: 29/255, blue: 54/255))
-                        .clipShape(Circle())
-                        .shadow(radius: 10)
-                }
+    
+    private var addIBanButton: some View {
+        Button(action: {
+            // adding new IBAN
+        }) {
+            Label("Add New IBan", systemImage: "plus")
+                .foregroundColor(.white)
+                .fontWeight(.bold)
                 .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(red: 1, green: 96/255, blue: 10/255))
+                .cornerRadius(10)
+        }
+    }
+    
+    private var iBanList: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                IBanNumberView()
+                IBanNumberView()
+                IBanNumberView()
+                IBanNumberView()
             }
+            .padding()
         }
     }
 }
