@@ -18,8 +18,7 @@ struct IBanDetailView: View {
             contentView
         }
         .sheet(isPresented: $showAddIbanView, content: {
-            AddIBanView()
-                .presentationDetents([.fraction(0.4)])
+            AddIBanView().presentationDetents([.fraction(0.4)])
         })
     }
     
