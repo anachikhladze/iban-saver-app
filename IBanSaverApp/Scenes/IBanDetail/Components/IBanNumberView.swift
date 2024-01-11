@@ -28,6 +28,7 @@ struct IBanNumberView: View {
     private var IBanDetails: some View {
         VStack(alignment: .leading, spacing: 3) {
             Text(viewModel.bankName)
+                .bold()
                 .foregroundStyle(Color.white)
                 .font(.subheadline)
                 .padding(.bottom, 2)
@@ -36,7 +37,7 @@ struct IBanNumberView: View {
                 .foregroundStyle(Color(red: 1, green: 1, blue: 1, opacity: 0.65))
                 .font(.footnote)
             
-            Text("GE22BG0000112311") // Replace with dynamic IBAN
+            Text("GE22BG0000112311")
                 .foregroundStyle(.white).bold()
                 .font(.subheadline)
         }

@@ -8,7 +8,6 @@
 import Foundation
 
 class IBanNumberViewModel: ObservableObject {
-    
     // MARK: - Properties
     var bankName = "TBC Bank"
     

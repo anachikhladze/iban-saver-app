@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddIBanView: View {
     // MARK: - Properties
-    @EnvironmentObject var flowController: FlowCoordinator
     @State private var ibanNumber: String = ""
     @State private var selectedBank: Bank = .TBCBank
     @Environment(\.dismiss) private var dismiss
