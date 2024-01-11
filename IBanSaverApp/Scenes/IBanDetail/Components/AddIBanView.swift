@@ -25,10 +25,8 @@ struct AddIBanView: View {
     // MARK: - Computed Properties
     private var contentView: some View {
         VStack {
-            dismissButton
+            dismissButton.padding(.top)
             Spacer()
-            headerView
-            Spacer().frame(height: 64)
             inputFields
             saveButton.padding()
             Spacer()
@@ -48,12 +46,6 @@ struct AddIBanView: View {
                     .padding(.trailing)
             })
         }
-    }
-    
-    private var headerView: some View {
-        Image(systemName: "text.badge.plus")
-            .foregroundStyle(Color(red: 1, green: 96/255, blue: 10/255))
-            .font(.system(size: 150))
     }
     
     private var inputFields: some View {
