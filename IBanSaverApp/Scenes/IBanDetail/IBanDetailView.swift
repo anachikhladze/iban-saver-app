@@ -48,17 +48,9 @@ struct IBanDetailView: View {
     }
     
     private var addIBanButton: some View {
-        Button(action: {
+        ActionButton(action: {
             showAddIbanView = true
-        }) {
-            Label("Add New IBan", systemImage: "plus")
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(red: 1, green: 96/255, blue: 10/255))
-                .cornerRadius(10)
-        }
+        }, label: "Add New IBan", systemImage: "plus")
     }
     
     private var iBanList: some View {

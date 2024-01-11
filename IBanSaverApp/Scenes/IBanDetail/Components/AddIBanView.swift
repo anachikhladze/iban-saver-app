@@ -75,17 +75,9 @@ struct AddIBanView: View {
     }
     
     private var saveButton: some View {
-        Button(action: {
+        ActionButton(action: {
             // TODO: - func
-        }) {
-            Text("Save")
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(red: 1, green: 96/255, blue: 10/255))
-                .cornerRadius(10)
-        }
+        }, text: "Save")
     }
 }
 
