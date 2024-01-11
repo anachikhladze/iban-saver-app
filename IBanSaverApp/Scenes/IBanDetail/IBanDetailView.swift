@@ -9,7 +9,6 @@ import SwiftUI
 
 struct IBanDetailView: View {
     // MARK: - Properties
-    @EnvironmentObject var flowController: FlowCoordinator
     @State var showAddIbanView: Bool = false
     
     // MARK: - Body

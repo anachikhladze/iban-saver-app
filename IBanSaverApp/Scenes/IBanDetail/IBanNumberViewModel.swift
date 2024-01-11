@@ -9,21 +9,20 @@ import Foundation
 
 class IBanNumberViewModel: ObservableObject {
     
+    // MARK: - Properties
     var bankName = "TBC Bank"
     
+    // MARK: - Methods
     func copyIban() {
-        // Copy IBan action
-        print("Copy IBan")
+        //TODO: copyIban functionality
     }
-
+    
     func shareIban() {
-        // Share IBan action
-        print("Share IBan")
+        //TODO: shareIban functionality
     }
-
+    
     func deleteIban() {
-        // Delete IBan action
-        print("Delete IBan")
+        //TODO: deleteIban functionality
     }
 }
 
