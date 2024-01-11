@@ -29,8 +29,18 @@ final class FlowCoordinator: ObservableObject {
         window.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
+    func showAddIBanView() {
+        let view = AddIBanView()
+            .environmentObject(self)
+        let viewController = UIHostingController(rootView: view)
+
+        viewController.modalPresentationStyle = .popover 
+
+        window.rootViewController?.present(viewController, animated: true)
+    }
+
+    
     func closeDetailView() {
-        // Needs to be more sophisticated later when there are more views
         window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }

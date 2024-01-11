@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct IBanDetailView: View {
-    
+    // MARK: - Properties
+    @EnvironmentObject var flowController: FlowCoordinator
+    @State var showAddIbanView: Bool = false
     
     // MARK: - Body
     var body: some View {
@@ -16,6 +18,9 @@ struct IBanDetailView: View {
             Color.black.edgesIgnoringSafeArea(.all)
             contentView
         }
+        .sheet(isPresented: $showAddIbanView, content: {
+            AddIBanView()
+        })
     }
     
     // MARK: - Computed Properties
@@ -45,7 +50,7 @@ struct IBanDetailView: View {
     
     private var addIBanButton: some View {
         Button(action: {
-            // adding new IBAN
+            showAddIbanView = true
         }) {
             Label("Add New IBan", systemImage: "plus")
                 .foregroundColor(.white)
@@ -72,6 +77,7 @@ struct IBanDetailView: View {
 
 #Preview {
     IBanDetailView()
+        .environmentObject(FlowCoordinator(window: UIWindow()))
 }
 
 
