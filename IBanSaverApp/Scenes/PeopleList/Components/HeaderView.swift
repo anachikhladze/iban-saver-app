@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
+    //MARK: - Body
     var body: some View {
         VStack {
             Text("MyIBAN")

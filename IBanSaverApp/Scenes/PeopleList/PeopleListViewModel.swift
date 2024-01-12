@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
 
 class PeopleListViewModel: ObservableObject {
+    //MARK: - Properties
     @Published var people: [Person] = [
         Person(firstName: "John", lastName: "Danashvili", ibanDetails: []),
         Person(firstName: "Nickolas", lastName: "Banashvili", ibanDetails: []),
@@ -16,10 +16,10 @@ class PeopleListViewModel: ObservableObject {
         Person(firstName: "Last", lastName: "Manashvili", ibanDetails: []),
         Person(firstName: "Jane", lastName: "Anashvili", ibanDetails: [])
     ]
-    
     @Published var searchText: String = ""
     private var isSorted = false
     
+    //MARK: - Methods
     func sortPeople() {
         if isSorted {
             people.sort { $0.lastName > $1.lastName }

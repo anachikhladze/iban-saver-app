@@ -8,29 +8,20 @@
 import SwiftUI
 
 struct PeopleListView: View {
-    
-    @ObservedObject var viewModel = PeopleListViewModel()
-    
+    //MARK: - ViewModel
+    @StateObject var viewModel = PeopleListViewModel()
+    //MARK: - Body
     var body: some View {
         HeaderView()
         sortButton
-        ScrollView {
-            VStack (alignment: .center, spacing: 26) {
-                ForEach(viewModel.people, id: \.id) { person in
-                    PersonView(person: person)
-                }
-            }
-            .padding()
-            .preferredColorScheme(.dark)
-            
-        }
+        scrollView
         button
     }
     
 }
-
-extension PeopleListView {
-    
+//MARK: - Extension
+private extension PeopleListView {
+    //MARK: - Computed properties
     var button: some View {
         Button(action: {
             print("Add button tapped")
@@ -52,6 +43,19 @@ extension PeopleListView {
                 viewModel.sortPeople()
             }
             .padding()
+        }
+    }
+    
+    var scrollView: some View {
+        ScrollView {
+            VStack (alignment: .center, spacing: 26) {
+                ForEach(viewModel.people) { person in
+                    PersonView(person: person)
+                }
+            }
+            .padding()
+            .preferredColorScheme(.dark)
+            
         }
     }
 }
