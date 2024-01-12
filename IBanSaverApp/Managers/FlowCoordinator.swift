@@ -10,27 +10,49 @@ import UIKit
 
 final class FlowCoordinator: ObservableObject {
     private let window: UIWindow
+    var viewModel = LoginViewModel()
     
     init(window: UIWindow) {
         self.window = window
     }
     
     func showRootView() {
-        let swiftUIView = LoginView()
+        let loginView = LoginView()
             .environmentObject(self)
-        let hostingView = UIHostingController(rootView: swiftUIView)
-        window.rootViewController = UINavigationController(rootViewController: hostingView)
+            .environmentObject(viewModel)
+        let hostingView = UIHostingController(rootView: loginView)
+        
+        let profileView = ProfileView()
+            .environmentObject(self)
+            .environmentObject(viewModel)
+        
+        let profileViewHosting = UIHostingController(rootView: profileView)
+        
+//        if viewModel.userSession != nil {
+//            window.rootViewController = UINavigationController(rootViewController: profileViewHosting)
+//        } else {
+//            window.rootViewController = UINavigationController(rootViewController: hostingView)
+//        }
+        
+        let contentView = ContentView()
+            .environmentObject(self)
+            .environmentObject(viewModel)
+        let contentViewHosting = UIHostingController(rootView: contentView)
+        window.rootViewController = UINavigationController(rootViewController: contentViewHosting)
     }
-    
-//    func showDetailView() {
-//        let detailView = TestDetailView()
-//            .environmentObject(self)
-//        let viewController = UIHostingController(rootView: detailView)
-//        window.rootViewController?.present(viewController, animated: true, completion: nil)
-//    }
     
     func closeDetailView() {
         // Needs to be more sophisticated later when there are more views
         window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }
+
+// List View უნდა აჩვენოს რადგან ამ შემთხვევაში ავტორიზაცია უკვე გავლილია
+
+
+//    func showDetailView() {
+//        let detailView = TestDetailView()
+//            .environmentObject(self)
+//        let viewController = UIHostingController(rootView: detailView)
+//        window.rootViewController?.present(viewController, animated: true, completion: nil)
+//    }

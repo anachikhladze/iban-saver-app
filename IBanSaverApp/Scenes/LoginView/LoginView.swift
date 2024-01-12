@@ -11,6 +11,8 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
+    @EnvironmentObject var viewModel: LoginViewModel
+    
     var body: some View {
         NavigationStack {
             Image("bank")
@@ -20,6 +22,11 @@ struct LoginView: View {
                 .padding(.vertical, 32)
             
             VStack(spacing: 24) {
+                Text("Login")
+                    .font(.custom("Avenir Next", size: 30))
+                    .fontWeight(.semibold)
+                
+                
                 InputView(text: $email,
                           title: "Email Address",
                           placeholder: "name@gmail.com")
@@ -41,9 +48,10 @@ struct LoginView: View {
             .padding(.horizontal)
             .padding(.top, 12)
             
-           
             Button {
-                print("Log user in")
+                Task {
+                   try await viewModel.signIn(withEmail: email, password: password)
+                }
             } label: {
                 HStack {
                     Text("SIGN IN")
@@ -55,6 +63,8 @@ struct LoginView: View {
             }
             
             .background(Color(.systemBlue))
+            .disabled(!formIsValid)
+            .opacity(formIsValid ? 1.0 : 0.5)
             .cornerRadius(10)
             .padding(.top, 24)
             
@@ -77,4 +87,31 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+}
+
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+    }
+}
+
+struct ContentView: View {
+    @EnvironmentObject var viewModel: LoginViewModel
+
+    var body: some View {
+        Group {
+            if viewModel.userSession != nil {
+                ProfileView()
+            } else {
+                LoginView()
+            }
+        }
+        .onReceive(viewModel.$userSession) { _ in
+          
+        }
+    }
 }
