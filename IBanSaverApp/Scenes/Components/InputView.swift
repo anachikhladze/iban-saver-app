@@ -9,11 +9,13 @@ import SwiftUI
 
 struct InputView: View {
     
+    // MARK: - Properties
     @Binding var text: String
     let title: String
     let placeholder: String
     var isSecureField = false
     
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
@@ -33,6 +35,7 @@ struct InputView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     InputView(text: .constant(""), title: "Email Address", placeholder: "name@example.com")
 }

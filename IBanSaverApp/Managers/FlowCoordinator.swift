@@ -17,29 +17,22 @@ final class FlowCoordinator: ObservableObject {
     }
     
     func showRootView() {
-        let loginView = LoginView()
+        let rootView = LoginRootView()
             .environmentObject(self)
             .environmentObject(viewModel)
-        let hostingView = UIHostingController(rootView: loginView)
-        
-        let profileView = ProfileView()
+        let rootViewHosting = UIHostingController(rootView: rootView)
+        window.rootViewController = UINavigationController(rootViewController: rootViewHosting)
+    }
+    
+    func showRegistrationPage() {
+        let registrationView = RegistrationView()
             .environmentObject(self)
             .environmentObject(viewModel)
-        
-        let profileViewHosting = UIHostingController(rootView: profileView)
-        
-//        if viewModel.userSession != nil {
-//            window.rootViewController = UINavigationController(rootViewController: profileViewHosting)
-//        } else {
-//            window.rootViewController = UINavigationController(rootViewController: hostingView)
-//        }
-        
-        
-        let contentView = ContentView()
-            .environmentObject(self)
-            .environmentObject(viewModel)
-        let contentViewHosting = UIHostingController(rootView: contentView)
-        window.rootViewController = UINavigationController(rootViewController: contentViewHosting)
+        let hostingView = UIHostingController(rootView: registrationView)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+            hostingView.navigationItem.hidesBackButton = true
+        }
     }
     
     func closeDetailView() {

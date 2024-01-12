@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct SettingsRowView: View {
+    
+    // MARK: - Properties
     let imageName: String
     let title: String
     let tintColor: Color
     
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: imageName)
@@ -26,6 +29,7 @@ struct SettingsRowView: View {
     }
 }
 
+// MARK: - Preview
 #Preview {
     SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
 }

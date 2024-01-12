@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct SignInCustomButton: View {
+    
+    // MARK: - Properties
     var label: String
     var action: () async throws -> Void
-
+    
+    // MARK: - Body
     var body: some View {
         Button {
             Task {

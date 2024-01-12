@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     
+    // MARK: - Body
     var body: some View {
         if let _ = viewModel.currentUser {
             List {

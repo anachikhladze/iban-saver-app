@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    // MARK: - Properties
     @State private var email = ""
     @State private var password = ""
     @State private var showingAlert = false
     @State private var alertMessage = ""
     
     @EnvironmentObject var viewModel: LoginViewModel
+    @EnvironmentObject var flowCoordinator: FlowCoordinator
     
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             Image("bank")
                 .resizable()
                 .scaledToFill()
-                .frame(maxWidth: 80, maxHeight: 100)
-                .padding(.vertical, 32)
+                .frame(maxWidth: 80, maxHeight: 90)
+                .padding(.top, 32)
             
             mainVStack
             signInButton
@@ -79,9 +83,8 @@ struct LoginView: View {
     
     
     private var registrationLink: some View {
-        NavigationLink {
-            RegistrationView()
-                .navigationBarBackButtonHidden()
+        Button {
+            flowCoordinator.showRegistrationPage()
         } label: {
             HStack(spacing: 2) {
                 Text("Don't have an account?")
@@ -93,33 +96,17 @@ struct LoginView: View {
     }
 }
 
+// MARK: - extension LoginView
 extension LoginView: AuthenticationFormProtocol {
     var formIsValid: Bool {
         return !email.isEmpty
         && email.contains("@")
         && !password.isEmpty
-        && password.count > 5
+        && password.count > 8
     }
 }
 
+// MARK: - Preview
 #Preview {
     LoginView()
-}
-
-
-struct ContentView: View {
-    @EnvironmentObject var viewModel: LoginViewModel
-    
-    var body: some View {
-        Group {
-            if viewModel.userSession != nil {
-                ProfileView()
-            } else {
-                LoginView()
-            }
-        }
-        .onReceive(viewModel.$userSession) { _ in
-            
-        }
-    }
 }

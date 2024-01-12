@@ -9,14 +9,17 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+// MARK: - AuthenticationFormProtocol
 protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
 }
 
+// MARK: - LoginViewModel
 final class LoginViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     
+    // MARK: - Initialization
     init() {
         self.userSession = Auth.auth().currentUser
         Task {
@@ -24,6 +27,7 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Methods
     func signIn(withEmail email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    
+    // MARK: - Properties
     @State private var email = ""
     @State private var fullname = ""
     @State private var password = ""
@@ -18,10 +20,12 @@ struct RegistrationView: View {
     @State private var containsNumber = false
     @State private var containsSymbol = false
     @State private var isValidSize = false
+    @State private var isValidEmail = false
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: LoginViewModel
     
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
@@ -40,7 +44,7 @@ struct RegistrationView: View {
                 message: Text("You've registered successfully, you can sign in from the login page"),
                 dismissButton: .default(Text("Ok"))
                 {
-                  dismiss()
+                    dismiss()
                 }
             )
         }
@@ -65,6 +69,9 @@ struct RegistrationView: View {
                       title: "Email Address",
                       placeholder: "name@gmail.com")
             .textInputAutocapitalization(.never)
+            .onChange(of: email) { newValue in
+                validateEmail()
+            }
             
             InputView(text: $fullname,
                       title: "Full Name",
@@ -110,27 +117,11 @@ struct RegistrationView: View {
     private var conditionsVStack: some View {
         VStack(alignment: .leading) {
             Group {
-                HStack {
-                    Image(systemName: containsCapitalLetter ? "checkmark.circle.fill" : "x.circle")
-                        .foregroundStyle(Color(.systemBlue))
-                    Text("At least one uppercase letter")
-                }
-                HStack {
-                    Image(systemName: containsSymbol ? "checkmark.circle.fill" : "x.circle")
-                        .foregroundStyle(Color(.systemBlue))
-                    Text("At least one special symbol: \"@, #, $, %, &\"")
-                }
-                
-                HStack {
-                    Image(systemName: isValidSize ? "checkmark.circle.fill" : "x.circle")
-                        .foregroundStyle(Color(.systemBlue))
-                    Text("At least 8 characters in length")
-                }
-                HStack {
-                    Image(systemName: containsNumber ? "checkmark.circle.fill" : "x.circle")
-                        .foregroundStyle(Color(.systemBlue))
-                    Text("At least one digit")
-                }
+                PasswordConditionView(condition: isValidEmail, text: "Email contains symbol \"@\"")
+                PasswordConditionView(condition: containsCapitalLetter, text: "At least one uppercase letter")
+                PasswordConditionView(condition: containsSymbol, text: "At least one special symbol: \"@, #, $, %, &\"")
+                PasswordConditionView(condition: isValidSize, text: "At least 8 characters in length")
+                PasswordConditionView(condition: containsNumber, text: "At least one digit")
             }
         }
         .padding(.top, 10)
@@ -160,10 +151,8 @@ struct RegistrationView: View {
     }
 }
 
-#Preview {
-    RegistrationView()
-}
 
+// MARK: - extension RegistrationView
 extension RegistrationView: AuthenticationFormProtocol {
     var formIsValid: Bool {
         return !email.isEmpty
@@ -182,4 +171,13 @@ extension RegistrationView: AuthenticationFormProtocol {
         containsSymbol = password.range(of: "[!@#$%^&*(),.?\":{}|<>]", options: .regularExpression) != nil
         isValidSize = password.count >= 8
     }
+    
+    func validateEmail() {
+        isValidEmail = email.contains("@")
+    }
+}
+
+// MARK: - Preview
+#Preview {
+    RegistrationView()
 }
