@@ -14,14 +14,22 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     @State private var showAlert = false
     
+    @State private var containsCapitalLetter = false
+    @State private var containsNumber = false
+    @State private var containsSymbol = false
+    @State private var isValidSize = false
+    
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: LoginViewModel
     
     var body: some View {
         NavigationStack {
-            signUpImage
-            signUpText
+            VStack(spacing: 10) {
+                signUpImage
+                signUpText
+            }
             inputFields
+            conditionsVStack
             signUpButton
             Spacer()
             signInButton
@@ -42,13 +50,12 @@ struct RegistrationView: View {
         Image("signup")
             .resizable()
             .scaledToFill()
-            .frame(maxWidth: 80, maxHeight: 100)
-            .padding(.vertical, 32)
+            .frame(maxWidth: 80, maxHeight: 90)
     }
     
     private var signUpText: some View {
         Text("Sign Up")
-            .font(.custom("Avenir Next", size: 30))
+            .font(.custom("Avenir Next", size: 26))
             .fontWeight(.semibold)
     }
     
@@ -67,11 +74,14 @@ struct RegistrationView: View {
                       title: "Password",
                       placeholder: "Enter your password",
                       isSecureField: true)
+            .onChange(of: password) { newValue in
+                validatePassword()
+            }
             
             confirmPasswordField
         }
         .padding(.horizontal)
-        .padding(.top, 12)
+        .padding(.top, 2)
     }
     
     private var confirmPasswordField: some View {
@@ -86,7 +96,7 @@ struct RegistrationView: View {
                     Image(systemName: "checkmark.circle.fill")
                         .imageScale(.large)
                         .fontWeight(.bold)
-                        .foregroundStyle(Color(.systemGreen))
+                        .foregroundStyle(Color(.systemBlue))
                 } else {
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.large)
@@ -95,6 +105,36 @@ struct RegistrationView: View {
                 }
             }
         }
+    }
+    
+    private var conditionsVStack: some View {
+        VStack(alignment: .leading) {
+            Group {
+                HStack {
+                    Image(systemName: containsCapitalLetter ? "checkmark.circle.fill" : "x.circle")
+                        .foregroundStyle(Color(.systemBlue))
+                    Text("At least one uppercase letter")
+                }
+                HStack {
+                    Image(systemName: containsSymbol ? "checkmark.circle.fill" : "x.circle")
+                        .foregroundStyle(Color(.systemBlue))
+                    Text("At least one special symbol: \"@, #, $, %, &\"")
+                }
+                
+                HStack {
+                    Image(systemName: isValidSize ? "checkmark.circle.fill" : "x.circle")
+                        .foregroundStyle(Color(.systemBlue))
+                    Text("At least 8 characters in length")
+                }
+                HStack {
+                    Image(systemName: containsNumber ? "checkmark.circle.fill" : "x.circle")
+                        .foregroundStyle(Color(.systemBlue))
+                    Text("At least one digit")
+                }
+            }
+        }
+        .padding(.top, 10)
+        .font(.custom("Avenir Next", size: 15))
     }
     
     private var signUpButton: some View {
@@ -127,11 +167,19 @@ struct RegistrationView: View {
 extension RegistrationView: AuthenticationFormProtocol {
     var formIsValid: Bool {
         return !email.isEmpty
-        && email.contains("@")
+        && containsSymbol
+        && containsNumber
+        && containsCapitalLetter
         && !password.isEmpty
         && confirmPassword == password
-        && password.count > 5
+        && isValidSize
         && !fullname.isEmpty
-        
+    }
+    
+    func validatePassword() {
+        containsCapitalLetter = password.range(of: "[A-Z]", options: .regularExpression) != nil
+        containsNumber = password.range(of: "[0-9]", options: .regularExpression) != nil
+        containsSymbol = password.range(of: "[!@#$%^&*(),.?\":{}|<>]", options: .regularExpression) != nil
+        isValidSize = password.count >= 8
     }
 }

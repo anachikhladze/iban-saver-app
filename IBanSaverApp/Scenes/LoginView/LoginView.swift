@@ -25,9 +25,7 @@ struct LoginView: View {
             
             mainVStack
             signInButton
-            
             Spacer()
-            
             registrationLink
         }
     }
