@@ -7,14 +7,9 @@
 
 import SwiftUI
 import UIKit
-//import Firebase
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-//    
-//    override init() {
-//        FirebaseApp.configure()
-//    }
-    
+
     @ObservedObject var viewModel = LoginViewModel()
     var window: UIWindow?
     private lazy var flowController = FlowCoordinator(window: window!)
@@ -27,4 +22,3 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 }
-

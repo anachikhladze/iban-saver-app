@@ -34,6 +34,7 @@ final class FlowCoordinator: ObservableObject {
 //            window.rootViewController = UINavigationController(rootViewController: hostingView)
 //        }
         
+        
         let contentView = ContentView()
             .environmentObject(self)
             .environmentObject(viewModel)

@@ -10,9 +10,11 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+
     @EnvironmentObject var viewModel: LoginViewModel
-    
+
     var body: some View {
         NavigationStack {
             Image("bank")
@@ -20,23 +22,22 @@ struct LoginView: View {
                 .scaledToFill()
                 .frame(maxWidth: 80, maxHeight: 100)
                 .padding(.vertical, 32)
-            
+
             VStack(spacing: 24) {
                 Text("Login")
                     .font(.custom("Avenir Next", size: 30))
                     .fontWeight(.semibold)
-                
-                
+
                 InputView(text: $email,
                           title: "Email Address",
                           placeholder: "name@gmail.com")
-                    .textInputAutocapitalization(.never)
-                
+                .textInputAutocapitalization(.never)
+
                 InputView(text: $password,
                           title: "Password",
                           placeholder: "Enter your password",
                           isSecureField: true)
-                
+
                 HStack(alignment: .bottom) {
                     Spacer()
                     Text("Forgot Password?")
@@ -47,10 +48,14 @@ struct LoginView: View {
             }
             .padding(.horizontal)
             .padding(.top, 12)
-            
+
             Button {
                 Task {
-                   try await viewModel.signIn(withEmail: email, password: password)
+                    do {
+                        try await viewModel.signIn(withEmail: email, password: password)
+                    } catch {
+                        showingAlert = true
+                    }
                 }
             } label: {
                 HStack {
@@ -61,15 +66,17 @@ struct LoginView: View {
                 .foregroundStyle(.white)
                 .frame(width: UIScreen.main.bounds.width - 32, height: 48)
             }
-            
             .background(Color(.systemBlue))
             .disabled(!formIsValid)
             .opacity(formIsValid ? 1.0 : 0.5)
             .cornerRadius(10)
             .padding(.top, 24)
-            
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Login Error"), message: Text("The email address or password you entered is incorrect. Please try again."), dismissButton: .default(Text("OK")))
+            }
+
             Spacer()
-            
+
             NavigationLink {
                 RegistrationView()
                     .navigationBarBackButtonHidden()
@@ -89,7 +96,6 @@ struct LoginView: View {
     LoginView()
 }
 
-
 extension LoginView: AuthenticationFormProtocol {
     var formIsValid: Bool {
         return !email.isEmpty
@@ -99,9 +105,10 @@ extension LoginView: AuthenticationFormProtocol {
     }
 }
 
+
 struct ContentView: View {
     @EnvironmentObject var viewModel: LoginViewModel
-
+    
     var body: some View {
         Group {
             if viewModel.userSession != nil {
@@ -111,7 +118,7 @@ struct ContentView: View {
             }
         }
         .onReceive(viewModel.$userSession) { _ in
-          
+            
         }
     }
 }

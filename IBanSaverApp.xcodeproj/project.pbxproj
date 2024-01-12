@@ -69,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A17C65C32B51837D00BD616E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A1D0AD0E2B4F33320018FC1D /* InputView.swift */,
+				A1D8110B2B50100F006997EA /* SettingsRowView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		A1D0ACDB2B4F110B0018FC1D = {
 			isa = PBXGroup;
 			children = (
@@ -157,12 +166,11 @@
 		A1D0AD0B2B4F30860018FC1D /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				A17C65C32B51837D00BD616E /* Components */,
 				A1D8114A2B501B90006997EA /* LoginViewModel */,
 				A1D0AD0C2B4F310B0018FC1D /* LoginView.swift */,
-				A1D8110B2B50100F006997EA /* SettingsRowView.swift */,
 				A1D8110D2B5010FB006997EA /* ProfileView.swift */,
 				A1D0AD102B4F3B2D0018FC1D /* RegistrationView.swift */,
-				A1D0AD0E2B4F33320018FC1D /* InputView.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";

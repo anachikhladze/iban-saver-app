@@ -12,6 +12,8 @@ struct RegistrationView: View {
     @State private var fullname = ""
     @State private var password = ""
     @State private var confirmPassword = ""
+    @State private var showAlert = false
+    
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var viewModel: LoginViewModel
@@ -37,7 +39,7 @@ struct RegistrationView: View {
                 InputView(text: $fullname,
                           title: "Full Name",
                           placeholder: "Enter your name")
-    
+                
                 InputView(text: $password,
                           title: "Password",
                           placeholder: "Enter your password",
@@ -66,11 +68,12 @@ struct RegistrationView: View {
             }
             .padding(.horizontal)
             .padding(.top, 12)
-    
+            
             
             Button {
                 Task {
                     try await viewModel.createUser(withEmail: email, password: password, fullname: fullname)
+                    showAlert = true
                 }
             } label: {
                 HStack {
@@ -101,6 +104,17 @@ struct RegistrationView: View {
                 .font(.system(size: 14))
             }
         }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Success"),
+                message: Text("You've registered successfully, you can sign in from the login page"),
+                dismissButton: .default(Text("Ok"))
+                {
+                  dismiss()
+                }
+            )
+        }
+
     }
 }
 

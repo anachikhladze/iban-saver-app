@@ -17,10 +17,9 @@ final class LoginViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
-    
+
     init() {
         self.userSession = Auth.auth().currentUser
-        
         Task {
             await fetchUser()
         }
@@ -35,6 +34,7 @@ final class LoginViewModel: ObservableObject {
             await fetchUser()
         } catch {
             print("DEBUG: Failed to log in with error: \(error.localizedDescription)")
+            throw error
         }
     }
     
@@ -42,7 +42,7 @@ final class LoginViewModel: ObservableObject {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             await MainActor.run {
-                self.userSession = result.user
+//                self.userSession = result.user
             }
             let user = User(id: result.user.uid, fullname: fullname, email: email)
             let encodedUser = try Firestore.Encoder().encode(user)
