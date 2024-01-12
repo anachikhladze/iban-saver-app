@@ -25,6 +25,8 @@
 		A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD042B4F13300018FC1D /* TestView.swift */; };
 		A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */; };
 		A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */; };
+		F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */; };
+		F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2C2B5139FB00781D8D /* AddListView.swift */; };
 		D5F1E4902B4F4A50002E47A0 /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */; };
 		D5F1E4922B4F4A94002E47A0 /* PeopleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */; };
 		D5F1E4962B508A71002E47A0 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4952B508A71002E47A0 /* PersonView.swift */; };
@@ -52,6 +54,8 @@
 		A1D0AD042B4F13300018FC1D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
 		A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailView.swift; sourceTree = "<group>"; };
+		F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
+		F193DF2C2B5139FB00781D8D /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 		D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListView.swift; sourceTree = "<group>"; };
 		D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewModel.swift; sourceTree = "<group>"; };
 		D5F1E4952B508A71002E47A0 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			children = (
 				A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */,
 				A1D0AD042B4F13300018FC1D /* TestView.swift */,
+				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
+				F193DF2C2B5139FB00781D8D /* AddListView.swift */,
 				A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */,
 			);
 			path = Test;
@@ -271,7 +277,9 @@
 				A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */,
 				A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */,
 				A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */,
+				F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */,
 				A1D0ACFD2B4F12580018FC1D /* Person.swift in Sources */,
+				F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */,
 				D5F1E4922B4F4A94002E47A0 /* PeopleListViewModel.swift in Sources */,
 				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
 				D5F1E4992B50B394002E47A0 /* HeaderView.swift in Sources */,

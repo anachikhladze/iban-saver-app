@@ -14,7 +14,7 @@ struct Person: Identifiable {
     var ibanDetails: [IBANDetail]
 }
 
-struct IBANDetail {
+struct IBANDetail: Hashable{
     var bankName: Bank
     var ibanNumber: String
 }
