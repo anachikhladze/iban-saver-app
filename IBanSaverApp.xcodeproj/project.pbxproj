@@ -17,6 +17,8 @@
 		A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD042B4F13300018FC1D /* TestView.swift */; };
 		A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */; };
 		A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */; };
+		F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */; };
+		F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2C2B5139FB00781D8D /* AddListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		A1D0AD042B4F13300018FC1D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
 		A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailView.swift; sourceTree = "<group>"; };
+		F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
+		F193DF2C2B5139FB00781D8D /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 			children = (
 				A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */,
 				A1D0AD042B4F13300018FC1D /* TestView.swift */,
+				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
+				F193DF2C2B5139FB00781D8D /* AddListView.swift */,
 				A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */,
 			);
 			path = Test;
@@ -201,7 +207,9 @@
 				A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */,
 				A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */,
 				A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */,
+				F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */,
 				A1D0ACFD2B4F12580018FC1D /* Person.swift in Sources */,
+				F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */,
 				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
 				A1D0AD022B4F12AB0018FC1D /* Color.swift in Sources */,
 				A1D0ACEA2B4F110B0018FC1D /* SceneDelegate.swift in Sources */,

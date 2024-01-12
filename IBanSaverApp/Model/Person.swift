@@ -7,18 +7,19 @@
 
 import Foundation
 
-struct Person {
+struct Person: Identifiable{
+    let id = UUID()
     var firstName: String
     var lastName: String
     var ibanDetails: [IBANDetail]
 }
 
-struct IBANDetail {
+struct IBANDetail: Hashable{
     var bankName: Bank
     var ibanNumber: String
 }
 
-enum Bank: String {
+enum Bank: String, CaseIterable  {
     case TBCBank = "TBC Bank"
     case BOG = "Bank Of Georgia"
     case Liberty = "Liberty Bank"
