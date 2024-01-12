@@ -10,7 +10,6 @@ import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    @ObservedObject var viewModel = LoginViewModel()
     var window: UIWindow?
     private lazy var flowController = FlowCoordinator(window: window!)
     

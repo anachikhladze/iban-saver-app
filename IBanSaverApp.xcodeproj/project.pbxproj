@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A17C65C52B518D8F00BD616E /* SignInCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C65C42B518D8F00BD616E /* SignInCustomButton.swift */; };
 		A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACE72B4F110B0018FC1D /* AppDelegate.swift */; };
 		A1D0ACEA2B4F110B0018FC1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACE92B4F110B0018FC1D /* SceneDelegate.swift */; };
 		A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A17C65C42B518D8F00BD616E /* SignInCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCustomButton.swift; sourceTree = "<group>"; };
 		A1D0ACE42B4F110B0018FC1D /* IBanSaverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBanSaverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0ACE72B4F110B0018FC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D0ACE92B4F110B0018FC1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				A1D0AD0E2B4F33320018FC1D /* InputView.swift */,
 				A1D8110B2B50100F006997EA /* SettingsRowView.swift */,
+				A17C65C42B518D8F00BD616E /* SignInCustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			files = (
 				A1D0AD112B4F3B2D0018FC1D /* RegistrationView.swift in Sources */,
 				A1D8110E2B5010FB006997EA /* ProfileView.swift in Sources */,
+				A17C65C52B518D8F00BD616E /* SignInCustomButton.swift in Sources */,
 				A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */,
 				A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */,
 				A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */,

@@ -47,13 +47,3 @@ final class FlowCoordinator: ObservableObject {
         window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }
-
-// List View უნდა აჩვენოს რადგან ამ შემთხვევაში ავტორიზაცია უკვე გავლილია
-
-
-//    func showDetailView() {
-//        let detailView = TestDetailView()
-//            .environmentObject(self)
-//        let viewController = UIHostingController(rootView: detailView)
-//        window.rootViewController?.present(viewController, animated: true, completion: nil)
-//    }
