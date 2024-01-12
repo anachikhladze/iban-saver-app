@@ -9,7 +9,6 @@ import Foundation
 
 class IBanNumberViewModel: ObservableObject {
     // MARK: - Properties
-    @Published var bankName = "TBC Bank"
     
     // MARK: - Methods    
     func deleteIban() {

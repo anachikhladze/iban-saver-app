@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		754D76AC2B51B35200A9A19F /* DataFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754D76AB2B51B35200A9A19F /* DataFlowViewModel.swift */; };
 		756DDC912B516DB3005AF1A5 /* LiveTextFromCameraScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */; };
 		756DDC932B516FDA005AF1A5 /* DataScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DDC922B516FDA005AF1A5 /* DataScannerVC.swift */; };
 		75D780302B4F289400AA4202 /* IBanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7802F2B4F289400AA4202 /* IBanDetailView.swift */; };
@@ -17,23 +18,21 @@
 		75D7803C2B500E5700AA4202 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7803B2B500E5700AA4202 /* ActionButton.swift */; };
 		A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACE72B4F110B0018FC1D /* AppDelegate.swift */; };
 		A1D0ACEA2B4F110B0018FC1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACE92B4F110B0018FC1D /* SceneDelegate.swift */; };
-		A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */; };
 		A1D0ACF12B4F110D0018FC1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D0ACF02B4F110D0018FC1D /* Assets.xcassets */; };
 		A1D0ACF42B4F110D0018FC1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D0ACF22B4F110D0018FC1D /* LaunchScreen.storyboard */; };
 		A1D0ACFD2B4F12580018FC1D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0ACFC2B4F12580018FC1D /* Person.swift */; };
 		A1D0AD022B4F12AB0018FC1D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD012B4F12AB0018FC1D /* Color.swift */; };
-		A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD042B4F13300018FC1D /* TestView.swift */; };
 		A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */; };
-		A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */; };
-		F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */; };
-		F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2C2B5139FB00781D8D /* AddListView.swift */; };
 		D5F1E4902B4F4A50002E47A0 /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */; };
 		D5F1E4922B4F4A94002E47A0 /* PeopleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */; };
 		D5F1E4962B508A71002E47A0 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4952B508A71002E47A0 /* PersonView.swift */; };
 		D5F1E4992B50B394002E47A0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4982B50B394002E47A0 /* HeaderView.swift */; };
+		F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */; };
+		F193DF2D2B5139FB00781D8D /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193DF2C2B5139FB00781D8D /* AddPersonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		754D76AB2B51B35200A9A19F /* DataFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowViewModel.swift; sourceTree = "<group>"; };
 		756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTextFromCameraScan.swift; sourceTree = "<group>"; };
 		756DDC922B516FDA005AF1A5 /* DataScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerVC.swift; sourceTree = "<group>"; };
 		75D7802F2B4F289400AA4202 /* IBanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBanDetailView.swift; sourceTree = "<group>"; };
@@ -45,21 +44,18 @@
 		A1D0ACE42B4F110B0018FC1D /* IBanSaverApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBanSaverApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D0ACE72B4F110B0018FC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1D0ACE92B4F110B0018FC1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A1D0ACF02B4F110D0018FC1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1D0ACF32B4F110D0018FC1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1D0ACF52B4F110D0018FC1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1D0ACFC2B4F12580018FC1D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A1D0AD012B4F12AB0018FC1D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		A1D0AD042B4F13300018FC1D /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
-		A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDetailView.swift; sourceTree = "<group>"; };
-		F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
-		F193DF2C2B5139FB00781D8D /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
 		D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListView.swift; sourceTree = "<group>"; };
 		D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewModel.swift; sourceTree = "<group>"; };
 		D5F1E4952B508A71002E47A0 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		D5F1E4982B50B394002E47A0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewModel.swift; sourceTree = "<group>"; };
+		F193DF2C2B5139FB00781D8D /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +69,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		754D76A92B51B28700A9A19F /* AddPerson */ = {
+			isa = PBXGroup;
+			children = (
+				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
+				F193DF2C2B5139FB00781D8D /* AddPersonView.swift */,
+			);
+			path = AddPerson;
+			sourceTree = "<group>";
+		};
+		754D76AA2B51B33500A9A19F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				754D76AB2B51B35200A9A19F /* DataFlowViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		755A22632B4F26CF0039157C /* IBanDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 				A1D0ACFB2B4F12490018FC1D /* Model */,
 				A1D0ACFE2B4F12720018FC1D /* Scenes */,
 				A1D0AD032B4F12E30018FC1D /* Managers */,
+				754D76AA2B51B33500A9A19F /* ViewModel */,
 				A1D0AD002B4F129A0018FC1D /* Extensions */,
 				A1D0ACF02B4F110D0018FC1D /* Assets.xcassets */,
 				A1D0ACF22B4F110D0018FC1D /* LaunchScreen.storyboard */,
@@ -138,7 +152,6 @@
 			children = (
 				D5F1E48E2B4F4A37002E47A0 /* PeopleList */,
 				755A22632B4F26CF0039157C /* IBanDetail */,
-				A1D0AD0A2B4F171D0018FC1D /* Test */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -170,21 +183,10 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		A1D0AD0A2B4F171D0018FC1D /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				A1D0ACEB2B4F110B0018FC1D /* ViewController.swift */,
-				A1D0AD042B4F13300018FC1D /* TestView.swift */,
-				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
-				F193DF2C2B5139FB00781D8D /* AddListView.swift */,
-				A1D0AD082B4F149D0018FC1D /* TestDetailView.swift */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		D5F1E48E2B4F4A37002E47A0 /* PeopleList */ = {
 			isa = PBXGroup;
 			children = (
+				754D76A92B51B28700A9A19F /* AddPerson */,
 				D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */,
 				D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */,
 				D5F1E4972B50B37D002E47A0 /* Components */,
@@ -271,20 +273,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754D76AC2B51B35200A9A19F /* DataFlowViewModel.swift in Sources */,
 				75D780392B4F545700AA4202 /* AddIBanView.swift in Sources */,
-				A1D0AD052B4F13300018FC1D /* TestView.swift in Sources */,
 				75D780332B4F2EEA00AA4202 /* IBanNumberView.swift in Sources */,
 				A1D0AD072B4F14410018FC1D /* FlowCoordinator.swift in Sources */,
-				A1D0ACEC2B4F110B0018FC1D /* ViewController.swift in Sources */,
 				A1D0ACE82B4F110B0018FC1D /* AppDelegate.swift in Sources */,
-				F193DF2D2B5139FB00781D8D /* AddListView.swift in Sources */,
+				F193DF2D2B5139FB00781D8D /* AddPersonView.swift in Sources */,
 				A1D0ACFD2B4F12580018FC1D /* Person.swift in Sources */,
 				F193DF2B2B5139BA00781D8D /* AddListViewModel.swift in Sources */,
 				D5F1E4922B4F4A94002E47A0 /* PeopleListViewModel.swift in Sources */,
-				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
 				D5F1E4992B50B394002E47A0 /* HeaderView.swift in Sources */,
 				75D780302B4F289400AA4202 /* IBanDetailView.swift in Sources */,
-				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
 				75D780372B4F3F5200AA4202 /* View.swift in Sources */,
 				756DDC912B516DB3005AF1A5 /* LiveTextFromCameraScan.swift in Sources */,
 				756DDC932B516FDA005AF1A5 /* DataScannerVC.swift in Sources */,

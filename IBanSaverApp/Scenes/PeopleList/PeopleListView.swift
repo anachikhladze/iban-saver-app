@@ -9,7 +9,10 @@ import SwiftUI
 
 struct PeopleListView: View {
     //MARK: - ViewModel
-    @StateObject var viewModel = PeopleListViewModel()
+    @StateObject var peopleListViewModel = PeopleListViewModel()
+    @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
+    @EnvironmentObject var flowCoordinator: FlowCoordinator
+    
     //MARK: - Body
     var body: some View {
         HeaderView()
@@ -24,7 +27,7 @@ private extension PeopleListView {
     //MARK: - Computed properties
     var button: some View {
         Button(action: {
-            print("Add button tapped")
+            flowCoordinator.showAddPersonView()
         }) {
             Text("Add New Contacts")
                 .font(.system(size: 20, weight: .bold))
@@ -40,7 +43,7 @@ private extension PeopleListView {
         HStack {
             Spacer()
             Button("Sort") {
-                viewModel.sortPeople()
+                peopleListViewModel.sortPeople(&dataFlowViewModel.persons)
             }
             .padding()
         }
@@ -49,8 +52,11 @@ private extension PeopleListView {
     var scrollView: some View {
         ScrollView {
             VStack (alignment: .center, spacing: 26) {
-                ForEach(viewModel.people) { person in
+                ForEach(dataFlowViewModel.persons) { person in
                     PersonView(person: person)
+                        .onTapGesture {
+                            peopleListViewModel.showDetailsPage(flowCoordinator: flowCoordinator, id: person.id)
+                        }
                 }
             }
             .padding()
@@ -60,8 +66,7 @@ private extension PeopleListView {
     }
 }
 
-
-
 #Preview {
     PeopleListView()
+        .environmentObject(DataFlowViewModel())
 }
