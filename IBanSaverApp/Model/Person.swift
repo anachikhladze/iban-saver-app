@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Person: Identifiable{
+struct Person: Identifiable {
     let id = UUID()
     var firstName: String
     var lastName: String
@@ -19,9 +19,10 @@ struct IBANDetail: Hashable{
     var ibanNumber: String
 }
 
-enum Bank: String, CaseIterable  {
+enum Bank: String, CaseIterable {
     case TBCBank = "TBC Bank"
     case BOG = "Bank Of Georgia"
     case Liberty = "Liberty Bank"
     case nationalBank = "National Bank Of Georgia"
 }
+
