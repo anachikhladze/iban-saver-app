@@ -22,14 +22,8 @@ class AddListViewModel: ObservableObject  {
     func addItem(firstName: String, lastName: String, ibanDetails: [IBANDetail] , persons: inout [Person], flowCoordinator: FlowCoordinator) {
         let newItem = Person(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails)
         persons.append(newItem)
-        print("Test")
-        flowCoordinator.goBack()
-    }
-    
-    func addPerson(firstName: String, lastName: String) {
-        let newItem = Person(firstName: firstName, lastName: lastName, ibanDetails: [])
-        items.append(newItem)
         print(newItem)
+        flowCoordinator.goBack()
     }
     
     func addIbanAndBank(to index: Int, bank: Bank, ibanNumber: String) {

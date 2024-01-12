@@ -107,14 +107,24 @@ struct AddPersonView: View {
     }
     
     func saveButtonPressed() {
-        guard !ibanDetails.isEmpty || !iban.isEmpty,
-              !firstName.isEmpty,
-              !lastName.isEmpty
-              
-        else {
+//        guard !ibanDetails.isEmpty || !iban.isEmpty,
+//              !firstName.isEmpty,
+//              !lastName.isEmpty
+//        else {
+//            showAlert = true
+//            return
+//        }
+        
+        if !ibanDetails.isEmpty || !iban.isEmpty, !firstName.isEmpty, !lastName.isEmpty {
+            ibanDetails.append(IBANDetail(bankName: Bank.allCases[selectedBankIndex], ibanNumber: iban))
+        } else {
             showAlert = true
             return
         }
+        
+//        if !iban.isEmpty {
+//            ibanDetails.append(iBA)
+//        }
         
         listViewModel.addItem(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails, persons: &dataFlowViewModel.persons, flowCoordinator: flowCoordinator)
     }
