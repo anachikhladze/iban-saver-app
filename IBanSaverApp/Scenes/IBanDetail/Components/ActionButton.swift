@@ -19,13 +19,13 @@ struct ActionButton: View {
         self.action = action
         self.text = text
     }
-
+    
     init(action: @escaping () -> Void, label: String, systemImage: String) {
         self.action = action
         self.label = label
         self.systemImage = systemImage
     }
-
+    
     // MARK: - Body
     var body: some View {
         Button(action: action) {

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct IBanNumberView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: IBanNumberViewModel
+    @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
     var iban: IBANDetail
+    var person: Person
     
     // MARK: - Body
     var body: some View {
@@ -53,14 +54,17 @@ struct IBanNumberView: View {
             ShareLink(item: iban.ibanNumber) {
                 roundedIcon(icon: "square.and.arrow.up")
             }
-            roundedIconButton(icon: "trash", action: viewModel.deleteIban)
+            roundedIcon(icon: "trash")
+                .onTapGesture {
+                    dataFlowViewModel.deleteIban(ibanDetail: iban, from: person.id)
+                }
         }
     }
     
 }
 
 #Preview {
-    IBanNumberView(viewModel: IBanNumberViewModel(), iban: IBANDetail(bankName: .BOG, ibanNumber: "GE12312312"))
+    IBanNumberView(iban: IBANDetail(bankName: .BOG, ibanNumber: "GE12312312"), person: mockupData.mockPersons[0])
 }
 
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct IBanDetailView: View {
     // MARK: - Properties
     @State var showAddIbanView: Bool = false
-    @StateObject var viewModel = IBanNumberViewModel()
     @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
     var id: UUID
     var person: Person? {
@@ -28,7 +27,7 @@ struct IBanDetailView: View {
             contentView
         }
         .sheet(isPresented: $showAddIbanView, content: {
-            AddIBanView().presentationDetents([.fraction(0.4)])
+            AddIBanView(person: person!).presentationDetents([.fraction(0.4)])
         })
     }
     
@@ -68,7 +67,7 @@ struct IBanDetailView: View {
             VStack(spacing: 20) {
                 if let person = person {
                     ForEach(person.ibanDetails) { iban in
-                        IBanNumberView(viewModel: viewModel, iban: iban)
+                        IBanNumberView(iban: iban, person: person)
                     }
                 } else {
                     Text("No IBAN details found for this ID.")
@@ -79,9 +78,9 @@ struct IBanDetailView: View {
     }
 }
 
-//#Preview {
-//    IBanDetailView(viewModel: IBanNumberViewModel(), id: UUID())
-//        .environmentObject(FlowCoordinator(window: UIWindow()))
-//}
+#Preview {
+    IBanDetailView(id: mockupData.mockPersons[0].id)
+        .environmentObject(DataFlowViewModel())
+}
 
 

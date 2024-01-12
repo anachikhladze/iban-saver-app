@@ -10,7 +10,6 @@ import UIKit
 
 final class FlowCoordinator: ObservableObject {
     private let window: UIWindow
-    var ibanNumberViewModel = IBanNumberViewModel()
     var dataFlowViewModel = DataFlowViewModel()
     
     init(window: UIWindow) {
@@ -50,5 +49,5 @@ final class FlowCoordinator: ObservableObject {
             navigationController.popViewController(animated: true)
         }
     }
-
+    
 }
