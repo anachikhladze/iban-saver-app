@@ -9,4 +9,5 @@ import SwiftUI
 
 extension Color {
     static let testColor = Color.white
+    static let buttonColor = Color(red: 1, green: 96/255, blue: 10/255)
 }
