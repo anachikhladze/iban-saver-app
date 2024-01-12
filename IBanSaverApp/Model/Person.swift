@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Person {
+struct Person: Identifiable {
+    let id = UUID()
     var firstName: String
     var lastName: String
     var ibanDetails: [IBANDetail]
