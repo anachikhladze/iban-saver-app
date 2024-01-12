@@ -19,9 +19,10 @@ struct IBANDetail {
     var ibanNumber: String
 }
 
-enum Bank: String {
+enum Bank: String, CaseIterable {
     case TBCBank = "TBC Bank"
     case BOG = "Bank Of Georgia"
     case Liberty = "Liberty Bank"
     case nationalBank = "National Bank Of Georgia"
 }
+

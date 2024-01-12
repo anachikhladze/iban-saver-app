@@ -12,9 +12,17 @@ struct TestView: View {
     
     var body: some View {
         VStack(spacing: 8) {
-            Text("Test")
+            Text("Tesdst")
             Button("Present Sheet", action: flowController.showDetailView)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.green)
     }
 }
+
+#Preview {
+    TestView()
+        .environmentObject(FlowCoordinator(window: UIWindow()))
+}
+        
+
+
