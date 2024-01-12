@@ -10,6 +10,7 @@ import SwiftUI
 struct IBanDetailView: View {
     // MARK: - Properties
     @State var showAddIbanView: Bool = false
+    @ObservedObject var viewModel: IBanNumberViewModel
     
     // MARK: - Body
     var body: some View {
@@ -33,7 +34,7 @@ struct IBanDetailView: View {
     
     private var headerView: some View {
         VStack(spacing: 16) {
-            Text("Your IBan Numbers")
+            Text(viewModel.bankName)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -43,6 +44,9 @@ struct IBanDetailView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)
+                .onTapGesture {
+                    viewModel.bankName = "sa"
+                }
         }
         .padding()
     }
@@ -56,10 +60,10 @@ struct IBanDetailView: View {
     private var iBanList: some View {
         ScrollView {
             VStack(spacing: 20) {
-                IBanNumberView()
-                IBanNumberView()
-                IBanNumberView()
-                IBanNumberView()
+                IBanNumberView(viewModel: viewModel)
+                IBanNumberView(viewModel: viewModel)
+                IBanNumberView(viewModel: viewModel)
+                IBanNumberView(viewModel: viewModel)
             }
             .padding()
         }
@@ -67,7 +71,7 @@ struct IBanDetailView: View {
 }
 
 #Preview {
-    IBanDetailView()
+    IBanDetailView(viewModel: IBanNumberViewModel())
         .environmentObject(FlowCoordinator(window: UIWindow()))
 }
 

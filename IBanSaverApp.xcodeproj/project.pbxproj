@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		756DDC912B516DB3005AF1A5 /* LiveTextFromCameraScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */; };
+		756DDC932B516FDA005AF1A5 /* DataScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756DDC922B516FDA005AF1A5 /* DataScannerVC.swift */; };
 		75D780302B4F289400AA4202 /* IBanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7802F2B4F289400AA4202 /* IBanDetailView.swift */; };
 		75D780332B4F2EEA00AA4202 /* IBanNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D780322B4F2EEA00AA4202 /* IBanNumberView.swift */; };
 		75D780352B4F376F00AA4202 /* IBanNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D780342B4F376F00AA4202 /* IBanNumberViewModel.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTextFromCameraScan.swift; sourceTree = "<group>"; };
+		756DDC922B516FDA005AF1A5 /* DataScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerVC.swift; sourceTree = "<group>"; };
 		75D7802F2B4F289400AA4202 /* IBanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBanDetailView.swift; sourceTree = "<group>"; };
 		75D780322B4F2EEA00AA4202 /* IBanNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBanNumberView.swift; sourceTree = "<group>"; };
 		75D780342B4F376F00AA4202 /* IBanNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBanNumberViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 				75D780322B4F2EEA00AA4202 /* IBanNumberView.swift */,
 				75D780382B4F545700AA4202 /* AddIBanView.swift */,
 				75D7803B2B500E5700AA4202 /* ActionButton.swift */,
+				756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D0AD062B4F14410018FC1D /* FlowCoordinator.swift */,
+				756DDC922B516FDA005AF1A5 /* DataScannerVC.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -272,6 +278,8 @@
 				75D780302B4F289400AA4202 /* IBanDetailView.swift in Sources */,
 				A1D0AD092B4F149D0018FC1D /* TestDetailView.swift in Sources */,
 				75D780372B4F3F5200AA4202 /* View.swift in Sources */,
+				756DDC912B516DB3005AF1A5 /* LiveTextFromCameraScan.swift in Sources */,
+				756DDC932B516FDA005AF1A5 /* DataScannerVC.swift in Sources */,
 				A1D0AD022B4F12AB0018FC1D /* Color.swift in Sources */,
 				D5F1E4962B508A71002E47A0 /* PersonView.swift in Sources */,
 				D5F1E4902B4F4A50002E47A0 /* PeopleListView.swift in Sources */,
@@ -421,8 +429,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69GK54W8ZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IBanSaverApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera Access Request: To facilitate the scanning of IBANs, please allow camera usage";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -448,8 +458,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 69GK54W8ZW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IBanSaverApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera Access Request: To facilitate the scanning of IBANs, please allow camera usage";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
