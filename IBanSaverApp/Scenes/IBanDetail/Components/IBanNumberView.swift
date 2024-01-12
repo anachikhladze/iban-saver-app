@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IBanNumberView: View {
     // MARK: - Properties
-    @StateObject private var viewModel = IBanNumberViewModel()
+    @ObservedObject var viewModel: IBanNumberViewModel
     
     // MARK: - Body
     var body: some View {
@@ -40,13 +40,18 @@ struct IBanNumberView: View {
             Text("GE22BG0000112311")
                 .foregroundStyle(.white).bold()
                 .font(.subheadline)
+                .textSelection(.enabled)
         }
     }
     
     private var actionButtons: some View {
         HStack {
-            roundedIconButton(icon: "doc.on.doc", action: viewModel.copyIban)
-            roundedIconButton(icon: "square.and.arrow.up", action: viewModel.shareIban)
+            roundedIconButton(icon: "doc.on.doc") {
+                UIPasteboard.general.string = "test" // TODO: - Replace With Real Data
+            }
+            ShareLink(item: "Test String") {
+                roundedIcon(icon: "square.and.arrow.up") // TODO: - Replace With Real Data
+            }
             roundedIconButton(icon: "trash", action: viewModel.deleteIban)
         }
     }
@@ -54,7 +59,7 @@ struct IBanNumberView: View {
 }
 
 #Preview {
-    IBanNumberView()
+    IBanNumberView(viewModel: IBanNumberViewModel())
 }
 
 

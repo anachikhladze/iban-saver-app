@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import VisionKit
 
 struct AddIBanView: View {
     // MARK: - Properties
     @State private var ibanNumber: String = ""
     @State private var selectedBank: Bank = .TBCBank
     @Environment(\.dismiss) private var dismiss
-
+    @FocusState var focustState: Bool
+    @State var liveScan = false
+    
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -49,28 +52,42 @@ struct AddIBanView: View {
     
     private var inputFields: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Picker("Select Bank", selection: $selectedBank) {
-                ForEach(Bank.allCases, id: \.self) { bank in
-                    Text(bank.rawValue).tag(bank)
-                }
+            picker
+            ibanInput
+        }
+    }
+    
+    private var picker: some View {
+        Picker("Select Bank", selection: $selectedBank) {
+            ForEach(Bank.allCases, id: \.self) { bank in
+                Text(bank.rawValue).tag(bank)
             }
+        }
+    }
+    
+    private var ibanInput: some View {
+        HStack {
+            TextField("", text: $ibanNumber, prompt: Text("IBan Number").foregroundColor(.white.opacity(0.5)))
+                .submitLabel(.done)
+                .textFieldStyle(.plain)
+                .frame(height: 16)
+                .padding()
+                .background(Color.midnightGray.cornerRadius(8))
+                .foregroundStyle(.white)
             
-            HStack {
-                TextField("IBan Number", text: $ibanNumber, prompt: Text("IBan Number").foregroundColor(.white.opacity(0.5)))
-                    .submitLabel(.done)
-                    .textFieldStyle(.plain)
-                    .frame(height: 16)
-                    .padding()
-                    .background(Color.midnightGray.cornerRadius(8))
-                    .foregroundStyle(.white)
-                
-                Image(systemName: "camera.viewfinder")
-                    .font(.title2)
-                    .imageScale(.large)
-                    .padding(.trailing)
-                    .foregroundStyle(Color(red: 1, green: 96/255, blue: 10/255))
-            }
-            .padding([.leading, .bottom])
+            Image(systemName: "camera.viewfinder")
+                .font(.title2)
+                .imageScale(.large)
+                .padding(.trailing)
+                .foregroundStyle(Color(red: 1, green: 96/255, blue: 10/255))
+                .onTapGesture {
+                    liveScan.toggle()
+                    focustState = false
+                }
+        }
+        .padding([.leading, .bottom])
+        .sheet(isPresented: $liveScan) {
+            LiveTextFromCameraScan(liveScan: $liveScan, scannedText: $ibanNumber)
         }
     }
     

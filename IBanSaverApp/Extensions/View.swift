@@ -16,4 +16,12 @@ extension View {
                 .background(Circle().fill(Color.gray.opacity(0.3)))
         }
     }
+    
+    func roundedIcon(icon: String) -> some View {
+        Image(systemName: icon)
+            .foregroundColor(.white)
+            .padding(6)
+            .background(Circle().fill(Color.gray.opacity(0.3)))
+    }
 }
+
