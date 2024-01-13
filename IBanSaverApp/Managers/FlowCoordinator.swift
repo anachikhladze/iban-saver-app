@@ -11,6 +11,7 @@ import UIKit
 final class FlowCoordinator: ObservableObject {
     private let window: UIWindow
     var viewModel = LoginViewModel()
+    var viewModel: IBanNumberViewModel = IBanNumberViewModel()
     
     init(window: UIWindow) {
         self.window = window
@@ -35,8 +36,18 @@ final class FlowCoordinator: ObservableObject {
         }
     }
     
+    func showDetailView() {
+        let detailView = IBanDetailView(viewModel: viewModel)
+            .environmentObject(self)
+            .environmentObject(viewModel)
+        let hostingView = UIHostingController(rootView: registrationView)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+            hostingView.navigationItem.hidesBackButton = true
+        }
+    }
+    
     func closeDetailView() {
-        // Needs to be more sophisticated later when there are more views
         window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }

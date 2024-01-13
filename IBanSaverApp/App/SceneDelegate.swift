@@ -5,7 +5,6 @@
 //  Created by Anna Sumire on 10.01.24.
 //
 
-import SwiftUI
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
