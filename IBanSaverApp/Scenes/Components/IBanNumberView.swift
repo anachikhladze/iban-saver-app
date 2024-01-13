@@ -22,7 +22,7 @@ struct IBanNumberView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .background(Color.midnightGray)
+        .background(.rowBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
     

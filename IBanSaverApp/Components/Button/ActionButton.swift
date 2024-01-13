@@ -39,7 +39,7 @@ struct ActionButton: View {
         .fontWeight(.bold)
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color(red: 1, green: 96/255, blue: 10/255))
+        .background(Color("ButtonColor"))
         .cornerRadius(10)
     }
 }

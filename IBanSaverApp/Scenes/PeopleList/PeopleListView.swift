@@ -35,9 +35,12 @@ private extension PeopleListView {
     private var sortButton: some View {
         HStack {
             Spacer()
-            Button("Sort") {
+
+            Button(action: {
                 peopleListViewModel.sortPeople(&dataFlowViewModel.persons)
-            }
+            }, label: {
+                Label("Sort", systemImage: "arrow.up.arrow.down")
+            })
             .padding()
         }
     }

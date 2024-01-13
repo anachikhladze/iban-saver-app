@@ -28,7 +28,7 @@ struct SignInCustomButton: View {
             .foregroundStyle(.white)
             .frame(width: UIScreen.main.bounds.width - 32, height: 48)
         }
-        .background(Color(.systemBlue))
+        .background(Color("ButtonColor"))
         .cornerRadius(10)
         .padding(.top, 24)
     }

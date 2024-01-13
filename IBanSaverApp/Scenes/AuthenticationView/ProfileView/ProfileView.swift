@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: LoginViewModel
+    @EnvironmentObject var flowCoordinator: FlowCoordinator
     
     // MARK: - Body
     var body: some View {
@@ -54,6 +55,14 @@ struct ProfileView: View {
     
     private var accountSection: some View {
         Section("Account") {
+            Button {
+                flowCoordinator.showPeopleListPage()
+            } label : {
+                SettingsRowView(imageName: "person.circle.fill",
+                                title: "Contacts",
+                                tintColor: .button)
+            }
+         
             Button {
                 viewModel.signOut()
             } label: {

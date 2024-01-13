@@ -17,8 +17,8 @@ struct LoginRootView: View {
     var body: some View {
         Group {
             if viewModel.userSession != nil {
-                PeopleListView()
-                    .environmentObject(flowCoordinator.dataFlowViewModel)
+                ProfileView()
+                    .environmentObject(flowCoordinator)
             } else {
                 LoginView()
             }

@@ -121,7 +121,6 @@
 		755A22632B4F26CF0039157C /* IBanDetail */ = {
 			isa = PBXGroup;
 			children = (
-				75D780312B4F2ED700AA4202 /* Components */,
 				75D7802F2B4F289400AA4202 /* IBanDetailView.swift */,
 			);
 			path = IBanDetail;
@@ -234,6 +233,7 @@
 				75DEEED12B52CC4800E5EDA7 /* AuthenticationView */,
 				D5F1E48E2B4F4A37002E47A0 /* PeopleList */,
 				755A22632B4F26CF0039157C /* IBanDetail */,
+				75D780312B4F2ED700AA4202 /* Components */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -278,10 +278,10 @@
 		D5F1E48E2B4F4A37002E47A0 /* PeopleList */ = {
 			isa = PBXGroup;
 			children = (
-				754D76A92B51B28700A9A19F /* AddPerson */,
 				D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */,
 				D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */,
 				D5F1E4972B50B37D002E47A0 /* Components */,
+				754D76A92B51B28700A9A19F /* AddPerson */,
 			);
 			path = PeopleList;
 			sourceTree = "<group>";

@@ -11,6 +11,7 @@ struct IBanDetailView: View {
     // MARK: - Properties
     @State var showAddIbanView: Bool = false
     @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
+    @Environment(\.colorScheme) var colorScheme
     var id: UUID
     var person: Person? {
         if let person = dataFlowViewModel.persons.first(where: { $0.id == id }) {
@@ -23,7 +24,7 @@ struct IBanDetailView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color.background.edgesIgnoringSafeArea(.all)
             contentView
         }
         .sheet(isPresented: $showAddIbanView, content: {
@@ -45,10 +46,10 @@ struct IBanDetailView: View {
             Text("\(person?.firstName ?? "No") \(person?.lastName ?? "Name")")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(.white)
+                .foregroundColor(.primary)
                 .padding(.bottom, 5)
             
-            Image(.safeLock)
+            Image(colorScheme == .light ? .safeLock : .safeLockDark)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)
@@ -65,12 +66,18 @@ struct IBanDetailView: View {
     private var iBanList: some View {
         ScrollView {
             VStack(spacing: 20) {
-                if let person = person {
+                if let person = person, !person.ibanDetails.isEmpty {
                     ForEach(person.ibanDetails) { iban in
                         IBanNumberView(iban: iban, person: person)
                     }
                 } else {
-                    Text("No IBAN details found for this ID.")
+                    VStack(spacing: 40) {
+                        Spacer()
+                        Image(systemName: "doc")
+                            .font(.system(size: 60))
+                        Text("No IBAN'S Found").bold().font(.system(size: 35))
+                    }
+                    .padding(.vertical)
                 }
             }
             .padding()

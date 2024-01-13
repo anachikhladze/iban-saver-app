@@ -20,7 +20,7 @@ struct AddIBanView: View {
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color.background.edgesIgnoringSafeArea(.all)
             contentView
         }
     }
@@ -31,7 +31,7 @@ struct AddIBanView: View {
             dismissButton.padding(.top)
             Spacer()
             inputFields
-            saveButton.padding()
+            saveButton.padding(.horizontal)
             Spacer()
         }.padding()
     }
@@ -44,7 +44,7 @@ struct AddIBanView: View {
                 dismiss()
             }, label: {
                 Image(systemName: "xmark")
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primaryWhite)
                     .font(.title)
                     .padding(.trailing)
             })

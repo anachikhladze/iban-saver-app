@@ -14,7 +14,7 @@ struct LoginView: View {
     @State private var password = ""
     @State private var showingAlert = false
     @State private var alertMessage = ""
-    
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var flowCoordinator: FlowCoordinator
     
@@ -28,7 +28,7 @@ struct LoginView: View {
     }
     
     private var bankImageView: some View {
-        Image("bank")
+        Image(colorScheme == .light ? "bank" : "bankDark")
             .resizable()
             .scaledToFill()
             .frame(maxWidth: 80, maxHeight: 90)
@@ -87,7 +87,7 @@ struct LoginView: View {
             flowCoordinator.showRegistrationPage()
         } label: {
             HStack(spacing: 2) {
-                Text("Don't have an account?")
+                Text("Don't have an account? ")
                 Text("Sign Up")
                     .fontWeight(.bold)
             }

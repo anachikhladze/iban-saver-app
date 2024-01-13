@@ -32,7 +32,16 @@ final class FlowCoordinator: ObservableObject {
         let hostingView = UIHostingController(rootView: registrationView)
         if let navigationController = window.rootViewController as? UINavigationController {
             navigationController.pushViewController(hostingView, animated: true)
-            hostingView.navigationItem.hidesBackButton = true
+        }
+    }
+    
+    func showPeopleListPage() {
+        let view = PeopleListView()
+            .environmentObject(self)
+            .environmentObject(dataFlowViewModel)
+        let hostingView = UIHostingController(rootView: view)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
         }
     }
     
@@ -55,6 +64,7 @@ final class FlowCoordinator: ObservableObject {
             navigationController.pushViewController(hostingView, animated: true)
         }
     }
+    
     
     func goBack() {
         if let navigationController = window.rootViewController as? UINavigationController {

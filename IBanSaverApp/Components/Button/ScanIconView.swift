@@ -12,9 +12,9 @@ struct ScanIconView: View {
     
     var body: some View {
         Image(systemName: "camera.viewfinder")
-            .font(.title2)
+            .font(.system(size: 28))
             .imageScale(.large)
-            .foregroundStyle(Color(red: 1, green: 96/255, blue: 10/255))
+            .foregroundStyle(Color("ButtonColor"))
             .onTapGesture {
                 action()
             }
