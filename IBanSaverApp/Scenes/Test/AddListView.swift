@@ -40,11 +40,6 @@ struct PersonRow: View {
         VStack(alignment: .leading) {
             Text("FirstName: \(person.firstName)")
             Text("LastName: \(person.lastName)")
-
-//            ForEach(person.ibanDetails, id: \.self) { ibanDetail in
-//                Text("Bank: \(ibanDetail.bankName.rawValue)")
-//                Text("IBAN: \(ibanDetail.ibanNumber)")
-           // }
         }
     }
 }
@@ -126,7 +121,6 @@ struct AddPersonForm: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             
-                                        Spacer()
                 Button(action: saveButtonPressed) {
                     Text("Add Person and IBAN")
                         .foregroundColor(.white)
