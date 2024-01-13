@@ -39,6 +39,7 @@
 		A1D811312B50185C006997EA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1D811302B50185C006997EA /* FirebaseFirestoreSwift */; };
 		A1D811472B50185C006997EA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A1D811462B50185C006997EA /* FirebaseStorage */; };
 		A1D8114C2B501BAE006997EA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D8114B2B501BAE006997EA /* LoginViewModel.swift */; };
+		A1E295A72B531AB20009D1C6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1E295A62B531AB20009D1C6 /* README.md */; };
 		D5F1E4902B4F4A50002E47A0 /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */; };
 		D5F1E4922B4F4A94002E47A0 /* PeopleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */; };
 		D5F1E4962B508A71002E47A0 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1E4952B508A71002E47A0 /* PersonView.swift */; };
@@ -78,6 +79,7 @@
 		A1D8110F2B5012BC006997EA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A1D811112B5016C8006997EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A1D8114B2B501BAE006997EA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A1E295A62B531AB20009D1C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListView.swift; sourceTree = "<group>"; };
 		D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewModel.swift; sourceTree = "<group>"; };
 		D5F1E4952B508A71002E47A0 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		A1D0ACDB2B4F110B0018FC1D = {
 			isa = PBXGroup;
 			children = (
+				A1E295A62B531AB20009D1C6 /* README.md */,
 				A1D0ACE62B4F110B0018FC1D /* IBanSaverApp */,
 				A1D0ACE52B4F110B0018FC1D /* Products */,
 			);
@@ -364,6 +367,7 @@
 			files = (
 				A1D0ACF42B4F110D0018FC1D /* LaunchScreen.storyboard in Resources */,
 				A1D0ACF12B4F110D0018FC1D /* Assets.xcassets in Resources */,
+				A1E295A72B531AB20009D1C6 /* README.md in Resources */,
 				A1D811122B5016C8006997EA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

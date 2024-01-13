@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct LoginView: View {
     
     // MARK: - Properties
