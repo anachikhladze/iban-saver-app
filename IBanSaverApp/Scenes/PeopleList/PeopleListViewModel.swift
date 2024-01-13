@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PeopleListViewModel: ObservableObject {
+final class PeopleListViewModel: ObservableObject {
     //MARK: - Properties
     @Published var searchText: String = ""
     private var isSorted = false
@@ -16,10 +16,8 @@ class PeopleListViewModel: ObservableObject {
     func sortPeople( _ people: inout [Person]) {
         if isSorted {
             people.sort { $0.firstName > $1.firstName }
-            print(people)
         } else {
             people.sort { $0.firstName < $1.firstName }
-            print(people)
         }
         isSorted.toggle()
     }

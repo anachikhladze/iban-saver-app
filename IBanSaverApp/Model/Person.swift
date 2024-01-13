@@ -27,7 +27,7 @@ enum Bank: String, CaseIterable {
     case nationalBank = "National Bank Of Georgia"
 }
 
-class mockupData {
+final class mockupData {
     static var mockPersons = [
         Person(firstName: "Bob", lastName: "Smith", ibanDetails: [
             IBANDetail(bankName: .Liberty, ibanNumber: "GE00LB1234567890123"),

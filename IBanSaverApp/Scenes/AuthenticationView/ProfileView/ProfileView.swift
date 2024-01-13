@@ -63,7 +63,7 @@ struct ProfileView: View {
             }
             
             Button {
-                print("Delete Account")
+                //TODO: - Under Development
             } label: {
                 SettingsRowView(imageName: "xmark.circle.fill",
                                 title: "Delete Account",

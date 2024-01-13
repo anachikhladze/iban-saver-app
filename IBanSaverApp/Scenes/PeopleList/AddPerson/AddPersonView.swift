@@ -107,7 +107,7 @@ struct AddPersonView: View {
 
 // MARK: - Extensions
 extension AddPersonView {
-    func saveButtonPressed() {
+    private func saveButtonPressed() {
         if !ibanDetails.isEmpty || !iban.isEmpty,
            !firstName.isEmpty, !lastName.isEmpty {
             ibanDetails.append(IBANDetail(bankName: selectedBank, ibanNumber: iban))
@@ -119,7 +119,7 @@ extension AddPersonView {
         addPersonViewModel.addItem(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails, persons: &dataFlowViewModel.persons, flowCoordinator: flowCoordinator)
     }
     
-    func addPlusButtonPressed() {
+    private func addPlusButtonPressed() {
         guard !iban.isEmpty else { return showErrorAlert = true }
         let newIbanDetail = IBANDetail(bankName: selectedBank, ibanNumber: iban)
         ibanDetails.append(newIbanDetail)

@@ -8,9 +8,11 @@
 
 import Foundation
 
-class AddListViewModel: ObservableObject  {
+final class AddListViewModel: ObservableObject  {
+    // MARK: - Properties
     @Published var items: [Person] = []
     
+    // MARK: - Methods
     func deleteItem(indexSet: IndexSet) {
         items.remove(atOffsets: indexSet)
     }
@@ -22,7 +24,6 @@ class AddListViewModel: ObservableObject  {
     func addItem(firstName: String, lastName: String, ibanDetails: [IBANDetail] , persons: inout [Person], flowCoordinator: FlowCoordinator) {
         let newItem = Person(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails)
         persons.append(newItem)
-        print(newItem)
         flowCoordinator.goBack()
     }
     
@@ -33,9 +34,6 @@ class AddListViewModel: ObservableObject  {
         
         let ibanDetail = IBANDetail(bankName: bank, ibanNumber: ibanNumber)
         items[index].ibanDetails.append(ibanDetail)
-    }
-    
-
-    
+    }    
 }
 
