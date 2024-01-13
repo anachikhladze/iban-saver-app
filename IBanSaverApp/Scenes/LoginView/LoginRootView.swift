@@ -22,8 +22,5 @@ struct LoginRootView: View {
                 LoginView()
             }
         }
-        .onReceive(viewModel.$userSession) { _ in
-            
-        }
     }
 }

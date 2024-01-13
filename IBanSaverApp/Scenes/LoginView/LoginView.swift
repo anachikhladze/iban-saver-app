@@ -20,18 +20,19 @@ struct LoginView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
-            Image("bank")
-                .resizable()
-                .scaledToFill()
-                .frame(maxWidth: 80, maxHeight: 90)
-                .padding(.top, 32)
-            
-            mainVStack
-            signInButton
-            Spacer()
-            registrationLink
-        }
+        bankImageView
+        mainVStack
+        signInButton
+        Spacer()
+        registrationLink
+    }
+    
+    private var bankImageView: some View {
+        Image("bank")
+            .resizable()
+            .scaledToFill()
+            .frame(maxWidth: 80, maxHeight: 90)
+            .padding(.top, 32)
     }
     
     private var mainVStack: some View {
@@ -80,7 +81,6 @@ struct LoginView: View {
             Alert(title: Text("Login Error"), message: Text("The email address or password you entered is incorrect. Please try again."), dismissButton: .default(Text("OK")))
         }
     }
-    
     
     private var registrationLink: some View {
         Button {

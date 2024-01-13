@@ -14,32 +14,32 @@ struct ProfileView: View {
     var body: some View {
         if let _ = viewModel.currentUser {
             List {
-                Section {
-                    userInfo
-                }
+                userInfoSection
                 generalSection
                 accountSection
             }
         }
     }
     
-    private var userInfo: some View {
-        HStack {
-            Image("user")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 82, height: 82)
-                .background (Color(.systemGray3))
-                .clipShape(Circle ())
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(viewModel.currentUser?.fullname ?? "")
-                    .font (.subheadline)
-                    .fontWeight (.semibold)
-                    .padding(.top, 4)
-                Text(viewModel.currentUser?.email ?? "")
-                    .font(.footnote)
-                    .accentColor(.gray)
+    private var userInfoSection: some View {
+        Section {
+            HStack {
+                Image("user")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 82, height: 82)
+                    .background (Color(.systemGray3))
+                    .clipShape(Circle ())
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(viewModel.currentUser?.fullname ?? "")
+                        .font (.subheadline)
+                        .fontWeight (.semibold)
+                        .padding(.top, 4)
+                    Text(viewModel.currentUser?.email ?? "")
+                        .font(.footnote)
+                        .accentColor(.gray)
+                }
             }
         }
     }
