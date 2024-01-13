@@ -72,6 +72,7 @@ struct AddPersonForm: View {
     @State private var selectedBankIndex: Int = 0
     @State private var iban: String = ""
     @State private var showAlert = false
+    @State private var ibanDetails: [IBANDetail] = []
 
     var body: some View {
         
@@ -81,10 +82,25 @@ struct AddPersonForm: View {
                 TextField("First Name", text: $firstName)
                 Text("Enter Last Name")
                 TextField("Last Name", text: $lastName)
+                List {
+                    ForEach(ibanDetails, id: \.self)
+                    {ibanDetail in
+                        HStack
+                        {
+                            Text("Bank: \(ibanDetail.bankName.rawValue)")
+                            Text("IBAN: \(ibanDetail.ibanNumber)")
+                        }
+                    } .onDelete(perform: listViewModel.deleteItem)
+                }
                 
-                Image(systemName:"plus.circle")
-                    .resizable()
-                    .frame(width:20, height: 20)
+                Button(action: addPlusButtonPressed) {
+                        
+                    Image(systemName:"plus.circle")
+                        .resizable()
+                        .frame(width:20, height: 20)
+                    
+                }
+                
             }
             Section{
                 Picker("Select Bank", selection: $selectedBankIndex) {
@@ -132,7 +148,23 @@ struct AddPersonForm: View {
             }
         }
     }
+    func addPlusButtonPressed() {
+        guard selectedBankIndex < Bank.allCases.count,
+                  !iban.isEmpty
+            else {
+                showAlert = true
+                return
+            }
 
+            let selectedBank = Bank.allCases[selectedBankIndex]
+            let newIbanDetail = IBANDetail(bankName: selectedBank, ibanNumber: iban)
+            ibanDetails.append(newIbanDetail)
+
+            // Clear the form fields
+            selectedBankIndex = 0
+            iban = ""
+        }
+    
     func saveButtonPressed() {
         guard selectedBankIndex < Bank.allCases.count,
               !firstName.isEmpty,
