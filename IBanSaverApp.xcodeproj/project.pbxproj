@@ -106,18 +106,18 @@
 		754D76A92B51B28700A9A19F /* AddPerson */ = {
 			isa = PBXGroup;
 			children = (
-				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
 				F193DF2C2B5139FB00781D8D /* AddPersonView.swift */,
+				F193DF2A2B5139BA00781D8D /* AddListViewModel.swift */,
 			);
 			path = AddPerson;
 			sourceTree = "<group>";
 		};
-		754D76AA2B51B33500A9A19F /* ViewModel */ = {
+		754D76AA2B51B33500A9A19F /* DataFlowViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				754D76AB2B51B35200A9A19F /* DataFlowViewModel.swift */,
 			);
-			path = ViewModel;
+			path = DataFlowViewModel;
 			sourceTree = "<group>";
 		};
 		755A22632B4F26CF0039157C /* IBanDetail */ = {
@@ -128,44 +128,31 @@
 			path = IBanDetail;
 			sourceTree = "<group>";
 		};
-		75D780312B4F2ED700AA4202 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				75D780322B4F2EEA00AA4202 /* IBanNumberView.swift */,
-				75D780382B4F545700AA4202 /* AddIBanView.swift */,
-				756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		75DEEED12B52CC4800E5EDA7 /* AuthenticationView */ = {
+		75DEEED12B52CC4800E5EDA7 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				A1D0AD0B2B4F30860018FC1D /* LoginView */,
 				A18A83D32B52065C0026F308 /* ProfileView */,
 				A18A83D62B52068A0026F308 /* RegistrationView */,
 			);
-			path = AuthenticationView;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
-		75DEEED92B52D61C00E5EDA7 /* Button */ = {
+		75DEEED92B52D61C00E5EDA7 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				75D7803B2B500E5700AA4202 /* ActionButton.swift */,
 				75DEEED22B52CFAB00E5EDA7 /* ScanIconView.swift */,
 				A17C65C42B518D8F00BD616E /* SignInCustomButton.swift */,
 			);
-			path = Button;
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		A17C65C32B51837D00BD616E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				75DEEED92B52D61C00E5EDA7 /* Button */,
-				A1D8110B2B50100F006997EA /* SettingsRowView.swift */,
-				A18A83D02B52029F0026F308 /* PasswordConditionView.swift */,
-				75DEEED52B52D23500E5EDA7 /* RoundedInputView.swift */,
-				75DEEED72B52D25500E5EDA7 /* InputView.swift */,
+				75DEEED92B52D61C00E5EDA7 /* Buttons */,
+				A1E295AA2B53256F0009D1C6 /* Other */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,7 +198,6 @@
 				A1D0ACFE2B4F12720018FC1D /* Scenes */,
 				A17C65C32B51837D00BD616E /* Components */,
 				A1D0AD032B4F12E30018FC1D /* Managers */,
-				754D76AA2B51B33500A9A19F /* ViewModel */,
 				A1D0AD002B4F129A0018FC1D /* Extensions */,
 				A1D0ACF02B4F110D0018FC1D /* Assets.xcassets */,
 				A1D811112B5016C8006997EA /* GoogleService-Info.plist */,
@@ -233,10 +219,11 @@
 		A1D0ACFE2B4F12720018FC1D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				75DEEED12B52CC4800E5EDA7 /* AuthenticationView */,
+				75DEEED12B52CC4800E5EDA7 /* Authentication */,
 				D5F1E48E2B4F4A37002E47A0 /* PeopleList */,
 				755A22632B4F26CF0039157C /* IBanDetail */,
-				75D780312B4F2ED700AA4202 /* Components */,
+				A1E295A92B5325430009D1C6 /* AddIbanView */,
+				754D76AA2B51B33500A9A19F /* DataFlowViewModel */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -278,24 +265,45 @@
 			path = LoginView;
 			sourceTree = "<group>";
 		};
-		D5F1E48E2B4F4A37002E47A0 /* PeopleList */ = {
+		A1E295A82B53246D0009D1C6 /* PeopleListView */ = {
 			isa = PBXGroup;
 			children = (
 				D5F1E48F2B4F4A50002E47A0 /* PeopleListView.swift */,
 				D5F1E4912B4F4A94002E47A0 /* PeopleListViewModel.swift */,
-				D5F1E4972B50B37D002E47A0 /* Components */,
+			);
+			path = PeopleListView;
+			sourceTree = "<group>";
+		};
+		A1E295A92B5325430009D1C6 /* AddIbanView */ = {
+			isa = PBXGroup;
+			children = (
+				75D780382B4F545700AA4202 /* AddIBanView.swift */,
+			);
+			path = AddIbanView;
+			sourceTree = "<group>";
+		};
+		A1E295AA2B53256F0009D1C6 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A1D8110B2B50100F006997EA /* SettingsRowView.swift */,
+				A18A83D02B52029F0026F308 /* PasswordConditionView.swift */,
+				75DEEED52B52D23500E5EDA7 /* RoundedInputView.swift */,
+				75DEEED72B52D25500E5EDA7 /* InputView.swift */,
+				D5F1E4952B508A71002E47A0 /* PersonView.swift */,
+				D5F1E4982B50B394002E47A0 /* HeaderView.swift */,
+				756DDC902B516DB3005AF1A5 /* LiveTextFromCameraScan.swift */,
+				75D780322B4F2EEA00AA4202 /* IBanNumberView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		D5F1E48E2B4F4A37002E47A0 /* PeopleList */ = {
+			isa = PBXGroup;
+			children = (
+				A1E295A82B53246D0009D1C6 /* PeopleListView */,
 				754D76A92B51B28700A9A19F /* AddPerson */,
 			);
 			path = PeopleList;
-			sourceTree = "<group>";
-		};
-		D5F1E4972B50B37D002E47A0 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				D5F1E4952B508A71002E47A0 /* PersonView.swift */,
-				D5F1E4982B50B394002E47A0 /* HeaderView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
