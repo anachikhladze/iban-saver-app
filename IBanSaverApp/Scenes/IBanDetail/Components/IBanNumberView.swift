@@ -54,10 +54,9 @@ struct IBanNumberView: View {
             ShareLink(item: iban.ibanNumber) {
                 roundedIcon(icon: "square.and.arrow.up")
             }
-            roundedIcon(icon: "trash")
-                .onTapGesture {
-                    dataFlowViewModel.deleteIban(ibanDetail: iban, from: person.id)
-                }
+            roundedIconButton(icon: "trash") {
+                dataFlowViewModel.deleteIban(ibanDetail: iban, from: person.id)
+            }
         }
     }
     

@@ -44,7 +44,9 @@ struct LiveTextFromCameraScan: View {
     }
     
     var dismissButton: some View {
-        ActionButton(action: { dismiss() }, text: "Cancel")
+        ActionButton(text: "Cancel") {
+            dismiss()
+        }
     }
 }
 

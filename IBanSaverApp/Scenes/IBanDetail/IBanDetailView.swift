@@ -57,9 +57,9 @@ struct IBanDetailView: View {
     }
     
     private var addIBanButton: some View {
-        ActionButton(action: {
+        ActionButton(label: "Add New Iban", systemImage: "plus") {
             showAddIbanView = true
-        }, label: "Add New IBan", systemImage: "plus")
+        }
     }
     
     private var iBanList: some View {

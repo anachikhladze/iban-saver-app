@@ -8,120 +8,128 @@
 import SwiftUI
 
 struct AddPersonView: View {
-    @StateObject var listViewModel = AddListViewModel()
+    
+    // MARK: - Properties
+    @StateObject var addPersonViewModel = AddListViewModel()
     @State private var firstName: String = ""
     @State private var lastName: String = ""
-    @State private var selectedBankIndex: Int = 0
+    @State private var selectedBank: Bank = .TBCBank
     @State private var iban: String = ""
-    @State private var showAlert = false
+    @State private var showErrorAlert = false
+    @State var showLiveScanAlert = false
     @State private var ibanDetails: [IBANDetail] = []
     @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
     @EnvironmentObject var flowCoordinator: FlowCoordinator
     
+    // MARK: - Body
     var body: some View {
-        
         Form {
-            Section {
-                TextField("First Name", text: $firstName)
-                TextField("Last Name", text: $lastName)
-                List {
-                    ForEach(ibanDetails, id: \.self)
-                    {ibanDetail in
-                        HStack
-                        {
-                            Text("Bank: \(ibanDetail.bankName.rawValue)")
-                            Text("IBAN: \(ibanDetail.ibanNumber)")
-                        }
-                    } .onDelete(perform: listViewModel.deleteItem)
-                }
-                
+            nameDetailFields
+            if ibanDetails.isEmpty {
+                EmptyView()
+            } else {
+                ibanList
+            }
+            addNewIban
+            ibanDetailFields
+        }
+    }
+    
+    // MARK: - Computed Properties
+    private var nameDetailFields: some View {
+        Section("person") {
+            TextField("First Name", text: $firstName)
+            
+            TextField("Last Name", text: $lastName)
+        }
+    }
+    
+    private var ibanList: some View {
+        Section("IBAN") {
+            ForEach(ibanDetails) { ibanDetail in
+                Text("\(ibanDetail.bankName.rawValue): \(ibanDetail.ibanNumber)")
+            }
+            .onDelete(perform: addPersonViewModel.deleteItem)
+        }
+    }
+    
+    private var addNewIban: some View {
+        Section {
+            HStack {
+                Text("Add New IBAN")
+                Spacer()
                 Button(action: addPlusButtonPressed) {
-                    
                     Image(systemName:"plus.circle")
-                        .resizable()
-                        .frame(width:20, height: 20)
-                    
+                        .font(.title3)
+                        .imageScale(.large)
                 }
-                
-            }
-            Section{
-                Picker("Select Bank", selection: $selectedBankIndex) {
-                    ForEach(0..<Bank.allCases.count, id: \.self) {
-                        Text(Bank.allCases[$0].rawValue)
-                    }
-                }
-                
-                Text("Enter IBAN")
-                TextField("IBAN", text: $iban)
-                Button(action: saveButtonPressed) {
-                    HStack{
-                        Image(systemName: "qrcode.viewfinder")
-                        Text("Scan IBAN")
-                    }
-                    
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .padding()
-                    .background(Color.black)
-                    .cornerRadius(20)
-                    Spacer()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                
-                Button(action: saveButtonPressed) {
-                    Text("Add Person and IBAN")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .padding()
-                        .background(Color.purple)
-                        .cornerRadius(20)
-                    Spacer()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-            .padding(10)
-            .background(Color(.systemGray6))
-            .cornerRadius(5)
-            .disableAutocorrection(true)
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Please fill all information"),
-                      dismissButton: .default(Text("OK")))
             }
         }
     }
-    func addPlusButtonPressed() {
-        guard selectedBankIndex < Bank.allCases.count,
-              !iban.isEmpty
-        else {
-            showAlert = true
+    
+    private var ibanDetailFields: some View {
+        Section("IBAN DETAIL") {
+            bankPicker
+            ibanInput
+            ActionButton(text: "Add Person and IBAN") {
+                saveButtonPressed()
+            }
+        }
+        .padding(10)
+        .cornerRadius(5)
+        .alert(isPresented: $showErrorAlert) {
+            Alert(title: Text("Please fill all information"),
+                  dismissButton: .default(Text("OK")))
+        }
+    }
+    
+    private var bankPicker: some View {
+        Picker("Select Bank", selection: $selectedBank) {
+            ForEach(Bank.allCases, id: \.self) { bank in
+                Text(bank.rawValue).tag(bank)
+            }
+        }
+    }
+    
+    private var ibanInput: some View {
+        HStack {
+            RoundedInputView(text: $iban)
+            Spacer()
+            ScanIconView {
+                showLiveScanAlert.toggle()
+            }
+        }
+        .sheet(isPresented: $showLiveScanAlert) {
+            LiveTextFromCameraScan(liveScan: $showLiveScanAlert, scannedText: $iban)
+        }
+    }
+}
+
+// MARK: - Extensions
+extension AddPersonView {
+    func saveButtonPressed() {
+        if !ibanDetails.isEmpty || !iban.isEmpty,
+           !firstName.isEmpty, !lastName.isEmpty {
+            ibanDetails.append(IBANDetail(bankName: selectedBank, ibanNumber: iban))
+        } else {
+            showErrorAlert = true
             return
         }
         
-        let selectedBank = Bank.allCases[selectedBankIndex]
+        addPersonViewModel.addItem(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails, persons: &dataFlowViewModel.persons, flowCoordinator: flowCoordinator)
+    }
+    
+    func addPlusButtonPressed() {
+        guard !iban.isEmpty else { return showErrorAlert = true }
         let newIbanDetail = IBANDetail(bankName: selectedBank, ibanNumber: iban)
         ibanDetails.append(newIbanDetail)
-        
-        selectedBankIndex = 0
+        selectedBank = .TBCBank
         iban = ""
-    }
-    
-    func saveButtonPressed() {
-    
-        if !ibanDetails.isEmpty || !iban.isEmpty, !firstName.isEmpty, !lastName.isEmpty {
-            ibanDetails.append(IBANDetail(bankName: Bank.allCases[selectedBankIndex], ibanNumber: iban))
-        } else {
-            showAlert = true
-            return
-        }
-        
-        listViewModel.addItem(firstName: firstName, lastName: lastName, ibanDetails: ibanDetails, persons: &dataFlowViewModel.persons, flowCoordinator: flowCoordinator)
     }
 }
 
 #Preview {
-    NavigationView {
-        AddPersonView(listViewModel: AddListViewModel())
-            .environmentObject(AddListViewModel())
-    }
+    AddPersonView(addPersonViewModel: AddListViewModel())
+        .environmentObject(AddListViewModel())
 }
 

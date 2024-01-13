@@ -27,5 +27,4 @@ class PeopleListViewModel: ObservableObject {
     func showDetailsPage(flowCoordinator: FlowCoordinator, id: UUID) {
         flowCoordinator.showDetailsView(id: id)
     }
-    
 }

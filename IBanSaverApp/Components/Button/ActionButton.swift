@@ -15,12 +15,12 @@ struct ActionButton: View {
     var systemImage: String?
     
     // MARK: - Initializers
-    init(action: @escaping () -> Void, text: String) {
+    init(text: String, action: @escaping () -> Void ) {
         self.action = action
         self.text = text
     }
     
-    init(action: @escaping () -> Void, label: String, systemImage: String) {
+    init(label: String, systemImage: String, action: @escaping () -> Void) {
         self.action = action
         self.label = label
         self.systemImage = systemImage

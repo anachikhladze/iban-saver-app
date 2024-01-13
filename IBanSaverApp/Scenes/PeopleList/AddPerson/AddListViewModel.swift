@@ -34,5 +34,8 @@ class AddListViewModel: ObservableObject  {
         let ibanDetail = IBANDetail(bankName: bank, ibanNumber: ibanNumber)
         items[index].ibanDetails.append(ibanDetail)
     }
+    
+
+    
 }
 

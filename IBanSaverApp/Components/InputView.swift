@@ -2,11 +2,11 @@
 //  InputView.swift
 //  IBanSaverApp
 //
-//  Created by Anna Sumire on 11.01.24.
+//  Created by Saba Gogrichiani on 13.01.24.
 //
 
 import SwiftUI
-
+ 
 struct InputView: View {
     
     // MARK: - Properties
@@ -34,7 +34,7 @@ struct InputView: View {
         }
     }
 }
-
+ 
 // MARK: - Preview
 #Preview {
     InputView(text: .constant(""), title: "Email Address", placeholder: "name@example.com")

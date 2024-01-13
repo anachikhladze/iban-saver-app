@@ -102,7 +102,7 @@ extension LoginView: AuthenticationFormProtocol {
         return !email.isEmpty
         && email.contains("@")
         && !password.isEmpty
-        && password.count > 8
+        && password.count > 7
     }
 }
 
@@ -110,3 +110,4 @@ extension LoginView: AuthenticationFormProtocol {
 #Preview {
     LoginView()
 }
+

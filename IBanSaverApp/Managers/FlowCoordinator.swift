@@ -11,7 +11,6 @@ import UIKit
 final class FlowCoordinator: ObservableObject {
     private let window: UIWindow
     var viewModel = LoginViewModel()
-    var viewModel: IBanNumberViewModel = IBanNumberViewModel()
     var dataFlowViewModel = DataFlowViewModel()
     
     init(window: UIWindow) {
