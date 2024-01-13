@@ -74,33 +74,41 @@ struct AddPersonForm: View {
     @State private var showAlert = false
 
     var body: some View {
+        
         Form {
             Section {
                 Text("Enter first Name")
-                                        TextField("First Name", text: $firstName)
-                                        Text("Enter Last Name")
-                                        TextField("Last Name", text: $lastName)
-
+                TextField("First Name", text: $firstName)
+                Text("Enter Last Name")
+                TextField("Last Name", text: $lastName)
+                Image(systemName:"plus.circle")
+                    .resizable()
+                    .frame(width:20, height: 20)
+            }
+            Section{
                 Picker("Select Bank", selection: $selectedBankIndex) {
                     ForEach(0..<Bank.allCases.count, id: \.self) {
                         Text(Bank.allCases[$0].rawValue)
                     }
                 }
+                
                 Text("Enter IBAN")
                 TextField("IBAN", text: $iban)
                 Button(action: saveButtonPressed) {
-                                            HStack{
-                                                Image(systemName: "qrcode.viewfinder")
-                                                Text("Scan IBAN")
-                                            }
-                                            .foregroundColor(.white)
-                                            .font(.headline)
-                                            .padding()
-                                            .background(Color.black)
-                                            .cornerRadius(20)
-                                            Spacer()
-                                                .frame(maxWidth: .infinity, alignment: .center)
-                                        }
+                    HStack{
+                        Image(systemName: "qrcode.viewfinder")
+                        Text("Scan IBAN")
+                    }
+                
+                    .foregroundColor(.white)
+                    .font(.headline)
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(20)
+                    Spacer()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            
                                         Spacer()
                 Button(action: saveButtonPressed) {
                     Text("Add Person and IBAN")
