@@ -29,6 +29,6 @@ The IBAN App is designed to make banking more convenient. Its user-friendly inte
 - [@SabaGogrichiani](https://github.com/WhereIsPumpkin)
 - [@SalomeGelenidze](https://github.com/salomege)
 - [@NikolozGachechiladze](https://github.com/nikagacho)
-- [@AnnaChikhladze](https://github.com/WhereIsPumpkin)
+- [@AnnaChikhladze](https://github.com/anachikhladze)
 
 
