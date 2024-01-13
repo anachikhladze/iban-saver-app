@@ -13,8 +13,10 @@ struct AddIBanView: View {
     @State private var ibanNumber: String = ""
     @State private var selectedBank: Bank = .TBCBank
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
     @FocusState var focustState: Bool
     @State var liveScan = false
+    var person: Person
     
     // MARK: - Body
     var body: some View {
@@ -93,13 +95,14 @@ struct AddIBanView: View {
     
     private var saveButton: some View {
         ActionButton(action: {
-            // TODO: - func
+            dataFlowViewModel.addIbanForPerson(from: person, iban: ibanNumber, bank: selectedBank)
+            dismiss()
         }, text: "Save")
     }
 }
 
 #Preview {
-    AddIBanView()
+    AddIBanView(person: mockupData.mockPersons[0])
 }
 
 

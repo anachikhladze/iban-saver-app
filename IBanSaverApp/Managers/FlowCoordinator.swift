@@ -10,27 +10,44 @@ import UIKit
 
 final class FlowCoordinator: ObservableObject {
     private let window: UIWindow
-    var viewModel: IBanNumberViewModel = IBanNumberViewModel()
+    var dataFlowViewModel = DataFlowViewModel()
     
     init(window: UIWindow) {
         self.window = window
     }
     
     func showRootView() {
-        let swiftUIView = IBanDetailView(viewModel: viewModel)
+        let swiftUIView = PeopleListView()
             .environmentObject(self)
+            .environmentObject(dataFlowViewModel)
         let hostingView = UIHostingController(rootView: swiftUIView)
         window.rootViewController = UINavigationController(rootViewController: hostingView)
     }
     
-    func showDetailView() {
-        let detailView = IBanDetailView(viewModel: viewModel)
+    func showAddPersonView() {
+        let view = AddPersonView()
             .environmentObject(self)
-        let viewController = UIHostingController(rootView: detailView)
-        window.rootViewController?.present(viewController, animated: true, completion: nil)
+            .environmentObject(dataFlowViewModel)
+        let hostingView = UIHostingController(rootView: view)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+        }
     }
     
-    func closeDetailView() {
-        window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+    func showDetailsView(id: UUID) {
+        let view = IBanDetailView(id: id)
+            .environmentObject(self)
+            .environmentObject(dataFlowViewModel)
+        let hostingView = UIHostingController(rootView: view)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+        }
     }
+    
+    func goBack() {
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.popViewController(animated: true)
+        }
+    }
+    
 }
