@@ -41,10 +41,10 @@ struct PersonRow: View {
             Text("FirstName: \(person.firstName)")
             Text("LastName: \(person.lastName)")
 
-            ForEach(person.ibanDetails, id: \.self) { ibanDetail in
-                Text("Bank: \(ibanDetail.bankName.rawValue)")
-                Text("IBAN: \(ibanDetail.ibanNumber)")
-            }
+//            ForEach(person.ibanDetails, id: \.self) { ibanDetail in
+//                Text("Bank: \(ibanDetail.bankName.rawValue)")
+//                Text("IBAN: \(ibanDetail.ibanNumber)")
+           // }
         }
     }
 }
@@ -81,6 +81,7 @@ struct AddPersonForm: View {
                 TextField("First Name", text: $firstName)
                 Text("Enter Last Name")
                 TextField("Last Name", text: $lastName)
+                
                 Image(systemName:"plus.circle")
                     .resizable()
                     .frame(width:20, height: 20)

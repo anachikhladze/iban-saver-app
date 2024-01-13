@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ListViewModel: ObservableObject {
+class AddListViewModel: ObservableObject  {
     @Published var items: [Person] = [] //{
 //        didSet {
 //            saveItems()
@@ -39,6 +39,12 @@ class ListViewModel: ObservableObject {
     func moveItem(from: IndexSet, to: Int) {
         items.move(fromOffsets: from, toOffset: to)
     }
+        func addItem(firstName: String, lastName: String, bank: Bank, ibanNumber: String) {
+            let IbanDetail = IBANDetail(bankName: bank, ibanNumber: ibanNumber)
+            let newItem = Person(firstName: firstName, lastName: lastName, ibanDetails: [IbanDetail])
+            items.append(newItem)
+            print(newItem)
+        }
 
     func addPerson(firstName: String, lastName: String) {
             let newItem = Person(firstName: firstName, lastName: lastName, ibanDetails: [])
