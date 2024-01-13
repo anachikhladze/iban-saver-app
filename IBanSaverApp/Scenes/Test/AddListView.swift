@@ -9,75 +9,121 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var listViewModel: AddListViewModel
-    
     @State private var isFormVisible = false
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var selectedBankIndex: Int = 0
-    @State private var iban: String = ""
-    @State private var showAlert = false
-    
+
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach(listViewModel.items) { person in
-                        VStack(alignment: .leading) {
-                            Text("FirstName: \(person.firstName)")
-                            Text("lastName: \(person.lastName)")
-                            ForEach(person.ibanDetails, id: \.self) { ibanDetail in
-                                Text("Bank: \(ibanDetail.bankName.rawValue)")
-                                Text("IBAN: \(ibanDetail.ibanNumber)")
-                            }
-                                
-                        }
+                        PersonRow(person: person)
                     }
                     .onDelete(perform: listViewModel.deleteItem)
                     .onMove(perform: listViewModel.moveItem)
                 }
                 .id(UUID())
                 .listStyle(PlainListStyle())
-                
-                Button(action: {
-                    isFormVisible.toggle()
-                }) {
-                    Text("Add News")
-                }
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(5)
-                .sheet(isPresented: $isFormVisible, onDismiss: {
-                }) {
-                    Form {
-                        Section {
-                            TextField("Enter first Name", text: $firstName)
-                            TextField("Enter last Name", text: $lastName)
-                            Picker("Select Bank", selection: $selectedBankIndex) {
-                                ForEach(0..<Bank.allCases.count, id: \.self) {
-                                    Text(Bank.allCases[$0].rawValue)
-                                }
-                            }
-                            TextField("Enter IBAN", text: $iban)
-                            Button(action: saveButtonPressed) {
-                                Text("Add News")
-                            }
-                        }
-                    }
-                    .padding(10)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5)
-                    .disableAutocorrection(true)
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Please fill all information"),
-                              dismissButton: .default(Text("OK"))
-                        )
-                    }
-                }
+
+                AddPersonButton(isFormVisible: $isFormVisible)
             }
-            
+            .sheet(isPresented: $isFormVisible) {
+                AddPersonForm(listViewModel: listViewModel, isFormVisible: $isFormVisible)
+            }
         }
     }
-    
+}
+
+struct PersonRow: View {
+    var person: Person
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("FirstName: \(person.firstName)")
+            Text("LastName: \(person.lastName)")
+
+            ForEach(person.ibanDetails, id: \.self) { ibanDetail in
+                Text("Bank: \(ibanDetail.bankName.rawValue)")
+                Text("IBAN: \(ibanDetail.ibanNumber)")
+            }
+        }
+    }
+}
+
+struct AddPersonButton: View {
+    @Binding var isFormVisible: Bool
+
+    var body: some View {
+        Button(action: {
+            isFormVisible.toggle()
+        }) {
+            Text("Add Person")
+        }
+        .padding(10)
+        .background(Color(.systemGray6))
+        .cornerRadius(5)
+    }
+}
+
+struct AddPersonForm: View {
+    @ObservedObject var listViewModel: AddListViewModel
+    @Binding var isFormVisible: Bool
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var selectedBankIndex: Int = 0
+    @State private var iban: String = ""
+    @State private var showAlert = false
+
+    var body: some View {
+        Form {
+            Section {
+                Text("Enter first Name")
+                                        TextField("First Name", text: $firstName)
+                                        Text("Enter Last Name")
+                                        TextField("Last Name", text: $lastName)
+
+                Picker("Select Bank", selection: $selectedBankIndex) {
+                    ForEach(0..<Bank.allCases.count, id: \.self) {
+                        Text(Bank.allCases[$0].rawValue)
+                    }
+                }
+                Text("Enter IBAN")
+                TextField("IBAN", text: $iban)
+                Button(action: saveButtonPressed) {
+                                            HStack{
+                                                Image(systemName: "qrcode.viewfinder")
+                                                Text("Scan IBAN")
+                                            }
+                                            .foregroundColor(.white)
+                                            .font(.headline)
+                                            .padding()
+                                            .background(Color.black)
+                                            .cornerRadius(20)
+                                            Spacer()
+                                                .frame(maxWidth: .infinity, alignment: .center)
+                                        }
+                                        Spacer()
+                Button(action: saveButtonPressed) {
+                    Text("Add Person and IBAN")
+                        .foregroundColor(.white)
+                                                       .font(.headline)
+                                                       .padding()
+                                                       .background(Color.purple)
+                                                       .cornerRadius(20)
+                                                       Spacer()
+                                                       .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+            .padding(10)
+            .background(Color(.systemGray6))
+            .cornerRadius(5)
+            .disableAutocorrection(true)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Please fill all information"),
+                      dismissButton: .default(Text("OK")))
+            }
+        }
+    }
+
     func saveButtonPressed() {
         guard selectedBankIndex < Bank.allCases.count,
               !firstName.isEmpty,
@@ -87,7 +133,7 @@ struct ContentView: View {
             showAlert = true
             return
         }
-        
+
         let selectedBank = Bank.allCases[selectedBankIndex]
         listViewModel.addItem(firstName: firstName, lastName: lastName, bank: selectedBank, ibanNumber: iban)
         isFormVisible = false
