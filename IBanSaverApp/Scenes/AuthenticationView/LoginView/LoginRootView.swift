@@ -18,6 +18,7 @@ struct LoginRootView: View {
         Group {
             if viewModel.userSession != nil {
                 ProfileView()
+                    .environmentObject(flowCoordinator)
             } else {
                 LoginView()
             }

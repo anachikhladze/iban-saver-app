@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @Environment(\.colorScheme) var colorScheme
     //MARK: - Body
     var body: some View {
         VStack {
-            Text("MyIBAN")
+            Text("Contacts")
                 .font(.title)
                 .bold()
-            Image(.profileIcon)
+            Image(colorScheme == .light ? .profileIcon : .profileIconDark)
                 .resizable()
-                .frame(width: 120, height: 120)
-                .background(Circle()
-                    .foregroundStyle(Color.orange)
-                )
+                .frame(width: 140, height: 140)
         }
         .preferredColorScheme(.dark)
     }

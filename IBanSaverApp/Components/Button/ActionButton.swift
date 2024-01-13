@@ -15,12 +15,12 @@ struct ActionButton: View {
     var systemImage: String?
     
     // MARK: - Initializers
-    init(action: @escaping () -> Void, text: String) {
+    init(text: String, action: @escaping () -> Void ) {
         self.action = action
         self.text = text
     }
     
-    init(action: @escaping () -> Void, label: String, systemImage: String) {
+    init(label: String, systemImage: String, action: @escaping () -> Void) {
         self.action = action
         self.label = label
         self.systemImage = systemImage
@@ -39,7 +39,7 @@ struct ActionButton: View {
         .fontWeight(.bold)
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color(red: 1, green: 96/255, blue: 10/255))
+        .background(Color("ButtonColor"))
         .cornerRadius(10)
     }
 }

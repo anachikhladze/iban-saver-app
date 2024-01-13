@@ -35,7 +35,7 @@ struct DataScannerVC: UIViewControllerRepresentable {
     }
     
     //MARK: - Coordinator
-    class Coordinator: NSObject, DataScannerViewControllerDelegate {
+    final class Coordinator: NSObject, DataScannerViewControllerDelegate {
         var parent: DataScannerVC
         init(parent: DataScannerVC) {
             self.parent = parent

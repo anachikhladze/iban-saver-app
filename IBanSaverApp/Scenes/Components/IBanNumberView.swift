@@ -22,7 +22,7 @@ struct IBanNumberView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .background(Color.midnightGray)
+        .background(.rowBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
     
@@ -54,10 +54,9 @@ struct IBanNumberView: View {
             ShareLink(item: iban.ibanNumber) {
                 roundedIcon(icon: "square.and.arrow.up")
             }
-            roundedIcon(icon: "trash")
-                .onTapGesture {
-                    dataFlowViewModel.deleteIban(ibanDetail: iban, from: person.id)
-                }
+            roundedIconButton(icon: "trash") {
+                dataFlowViewModel.deleteIban(ibanDetail: iban, from: person.id)
+            }
         }
     }
     

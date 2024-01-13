@@ -2,11 +2,11 @@
 //  InputView.swift
 //  IBanSaverApp
 //
-//  Created by Anna Sumire on 11.01.24.
+//  Created by Saba Gogrichiani on 13.01.24.
 //
 
 import SwiftUI
-
+ 
 struct InputView: View {
     
     // MARK: - Properties
@@ -19,22 +19,23 @@ struct InputView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
-                .foregroundStyle(Color(.darkGray))
+                .foregroundStyle(Color("inputTitleColor"))
                 .fontWeight(.semibold)
                 .font(.footnote)
             
             if isSecureField {
-                SecureField(placeholder, text: $text)
+                SecureField("", text: $text, prompt: Text(placeholder).foregroundColor(Color("placeholderColor")))
                     .font(.system(size: 14))
             } else {
-                TextField(placeholder, text: $text)
+                TextField("", text: $text, prompt: Text(placeholder).foregroundColor(Color("placeholderColor"))
+                )
                     .font(.system(size: 14))
             }
             Divider()
         }
     }
 }
-
+ 
 // MARK: - Preview
 #Preview {
     InputView(text: .constant(""), title: "Email Address", placeholder: "name@example.com")

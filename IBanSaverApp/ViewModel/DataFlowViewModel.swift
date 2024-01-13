@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataFlowViewModel: ObservableObject {
+final class DataFlowViewModel: ObservableObject {
     
     @Published var persons: [Person]
     

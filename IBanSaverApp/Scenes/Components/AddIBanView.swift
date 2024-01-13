@@ -14,14 +14,13 @@ struct AddIBanView: View {
     @State private var selectedBank: Bank = .TBCBank
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
-    @FocusState var focustState: Bool
     @State var liveScan = false
     var person: Person
     
     // MARK: - Body
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color.background.edgesIgnoringSafeArea(.all)
             contentView
         }
     }
@@ -32,7 +31,7 @@ struct AddIBanView: View {
             dismissButton.padding(.top)
             Spacer()
             inputFields
-            saveButton.padding()
+            saveButton.padding(.horizontal)
             Spacer()
         }.padding()
     }
@@ -45,7 +44,7 @@ struct AddIBanView: View {
                 dismiss()
             }, label: {
                 Image(systemName: "xmark")
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primaryWhite)
                     .font(.title)
                     .padding(.trailing)
             })
@@ -77,15 +76,10 @@ struct AddIBanView: View {
                 .background(Color.midnightGray.cornerRadius(8))
                 .foregroundStyle(.white)
             
-            Image(systemName: "camera.viewfinder")
-                .font(.title2)
-                .imageScale(.large)
-                .padding(.trailing)
-                .foregroundStyle(Color(red: 1, green: 96/255, blue: 10/255))
-                .onTapGesture {
-                    liveScan.toggle()
-                    focustState = false
-                }
+            ScanIconView {
+              liveScan.toggle()
+            }
+            .padding(.trailing)
         }
         .padding([.leading, .bottom])
         .sheet(isPresented: $liveScan) {
@@ -94,10 +88,10 @@ struct AddIBanView: View {
     }
     
     private var saveButton: some View {
-        ActionButton(action: {
+        ActionButton(text: "Save") {
             dataFlowViewModel.addIbanForPerson(from: person, iban: ibanNumber, bank: selectedBank)
             dismiss()
-        }, text: "Save")
+        }
     }
 }
 

@@ -17,13 +17,13 @@ struct PersonView: View {
             Spacer()
             Image(systemName: "person.fill")
                 .resizable()
+                .foregroundStyle(.white)
                 .scaledToFit()
-                .frame(width: 34)
+                .frame(width: 30)
         }
         .frame(height: 36)
-        .preferredColorScheme(.dark)
         .padding()
-        .background(Color.gray)
+        .background(Color(.rowBackground))
         .cornerRadius(10.0)
     }
 }
@@ -34,6 +34,7 @@ private extension PersonView {
     var nameStack: some View {
         VStack {
             Text(person.firstName + " " + person.lastName)
+                .foregroundStyle(.white)
         }
         .bold()
         .font(.system(size: 22))
