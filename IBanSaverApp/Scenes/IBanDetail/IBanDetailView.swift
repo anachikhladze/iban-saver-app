@@ -10,7 +10,15 @@ import SwiftUI
 struct IBanDetailView: View {
     // MARK: - Properties
     @State var showAddIbanView: Bool = false
-    @ObservedObject var viewModel: IBanNumberViewModel
+    @EnvironmentObject var dataFlowViewModel: DataFlowViewModel
+    var id: UUID
+    var person: Person? {
+        if let person = dataFlowViewModel.persons.first(where: { $0.id == id }) {
+            return person
+        } else {
+            return nil
+        }
+    }
     
     // MARK: - Body
     var body: some View {
@@ -19,7 +27,7 @@ struct IBanDetailView: View {
             contentView
         }
         .sheet(isPresented: $showAddIbanView, content: {
-            AddIBanView().presentationDetents([.fraction(0.4)])
+            AddIBanView(person: person!).presentationDetents([.fraction(0.4)])
         })
     }
     
@@ -34,7 +42,7 @@ struct IBanDetailView: View {
     
     private var headerView: some View {
         VStack(spacing: 16) {
-            Text(viewModel.bankName)
+            Text("\(person?.firstName ?? "No") \(person?.lastName ?? "Name")")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -44,9 +52,6 @@ struct IBanDetailView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)
-                .onTapGesture {
-                    viewModel.bankName = "sa"
-                }
         }
         .padding()
     }
@@ -60,10 +65,13 @@ struct IBanDetailView: View {
     private var iBanList: some View {
         ScrollView {
             VStack(spacing: 20) {
-                IBanNumberView(viewModel: viewModel)
-                IBanNumberView(viewModel: viewModel)
-                IBanNumberView(viewModel: viewModel)
-                IBanNumberView(viewModel: viewModel)
+                if let person = person {
+                    ForEach(person.ibanDetails) { iban in
+                        IBanNumberView(iban: iban, person: person)
+                    }
+                } else {
+                    Text("No IBAN details found for this ID.")
+                }
             }
             .padding()
         }
@@ -71,8 +79,8 @@ struct IBanDetailView: View {
 }
 
 #Preview {
-    IBanDetailView(viewModel: IBanNumberViewModel())
-        .environmentObject(FlowCoordinator(window: UIWindow()))
+    IBanDetailView(id: mockupData.mockPersons[0].id)
+        .environmentObject(DataFlowViewModel())
 }
 
 

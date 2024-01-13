@@ -13,11 +13,12 @@ struct PersonView: View {
     //MARK: - Body
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
+            nameStack
+            Spacer()
             Image(systemName: "person.fill")
                 .resizable()
-                .frame(width: 40)
-            Spacer()
-            nameStack
+                .scaledToFit()
+                .frame(width: 34)
         }
         .frame(height: 36)
         .preferredColorScheme(.dark)
@@ -35,11 +36,10 @@ private extension PersonView {
             Text(person.firstName + " " + person.lastName)
         }
         .bold()
-        .font(.system(size: 18))
-        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+        .font(.system(size: 22))
     }
 }
 
 #Preview {
-    PersonView(person: Person(firstName: "Nick", lastName: "Doe", ibanDetails: []))
+    PersonView(person: Person(firstName: "Jonathan", lastName: "Livierda", ibanDetails: []))
 }
