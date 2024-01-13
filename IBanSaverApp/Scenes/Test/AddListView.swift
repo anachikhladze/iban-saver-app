@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AddListView: View {
     @EnvironmentObject var listViewModel: AddListViewModel
     @State private var isFormVisible = false
 
@@ -178,7 +178,7 @@ struct AddPersonForm: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView()
+            AddListView()
                 .environmentObject(AddListViewModel())
         }
     }
